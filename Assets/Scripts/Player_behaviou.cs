@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Player_behaviou : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    // ------ MOVEMENT ------
+    Rigidbody2D rb;
+    public int movement_speed;
+
     void Start()
     {
-        
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // ------ MOVEMENT ------
+        Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        rb.velocity = dir.normalized * movement_speed;
     }
+
 }
