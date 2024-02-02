@@ -8,7 +8,7 @@ public class Player_behaviou : MonoBehaviour
     // ------ MOVEMENT ------
     Rigidbody2D rb;
     public int movement_speed;
-
+    
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
