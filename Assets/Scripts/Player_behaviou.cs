@@ -48,6 +48,8 @@ public class Player_behaviou : MonoBehaviour
             UpdateMovement();
         }
 
+        animator.SetBool("IsMoving", rb.velocity.magnitude > 0);
+
         CheckIsAlive();
         CheckDashInput();
         UpdateTimer();
@@ -74,7 +76,7 @@ public class Player_behaviou : MonoBehaviour
             {
                 dashDirection = dir.normalized;
             }
-            movement_speed = 1.5f;
+            // movement_speed = 1.5f;
         }
     }
 
