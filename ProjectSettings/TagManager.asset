@@ -4,19 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - objects
-  - Large
   - Small
   - Medium
-  - Bullet
+  - Large
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
-  - Bullets
+  - 
   - 
   - 
   - 

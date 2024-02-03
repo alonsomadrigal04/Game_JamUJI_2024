@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class RandomSpawn : MonoBehaviour
@@ -7,10 +8,13 @@ public class RandomSpawn : MonoBehaviour
     private int probabilitySmall = 10;
     private int probabilityMedium = 7;
     private int probabilityLarge = 5;
-    public int probabilityNumber;
+    private int probabilityNumber;
     private int probabilitySpawn;
 
-    private int quantityObjects = 0;
+    [HideInInspector]
+    public int quantityObjects = 0;
+    [HideInInspector]
+    public int maxQuatityObjects = 5;
 
     private Vector2 randomPosition;
 
@@ -18,8 +22,10 @@ public class RandomSpawn : MonoBehaviour
     public GameObject mediumObject;
     public GameObject largeObject;
 
-    Collider2D collider;
+    private int durationTimer;
+    private float timer = 10;
 
+    Collider2D collider;
 
 
     void Start()
@@ -30,42 +36,37 @@ public class RandomSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         collider = GetComponent<Collider2D>();
+        RandomSpawner();
     }
 
     private void RandomSpawner()
     {
-        
-        while (quantityObjects < 5) 
+       
+        if(timer > durationTimer && quantityObjects < 5)
         {
-            probabilitySpawn = Random.Range(1, probabilityNumber);
+            probabilitySpawn = UnityEngine.Random.Range(1, probabilityNumber);
+            randomPosition = CreateRandomPosition(GetComponent<Collider2D>());
             if (probabilitySpawn <= probabilitySmall)
-            {
-                //Instantiate(smallObject,)
-            }
-            else if(probabilitySpawn < probabilitySmall + probabilityMedium + 1)
-            {
+                Instantiate(smallObject, randomPosition, Quaternion.identity);
 
-            }
+            else if (probabilitySpawn < probabilitySmall + probabilityMedium + 1)
+                Instantiate(mediumObject, randomPosition, Quaternion.identity);
+
             else
-            {
-
-            }
-
-            randomPosition = CreateRandomPosition(collider);
-
-            
-            
+                Instantiate(largeObject, randomPosition, Quaternion.identity);
             quantityObjects++;
+            timer = 0;
         }
     }
 
     Vector2 CreateRandomPosition(Collider2D collider)
     {
         Vector2 colliderCenter = collider.bounds.center;
-        Vector2 colliderSize = collider.bounds.size;
+        Vector2 colliderSize = collider.bounds.size / 2f;
 
-        Vector2 randomPositionWhile = colliderCenter + new Vector2 (Random.Range(-colliderSize.x, colliderSize.x), Random.Range(-colliderSize.y, colliderSize.y));
+        Vector2 randomPositionWhile = colliderCenter + new Vector2 (UnityEngine.Random.Range(-colliderSize.x, colliderSize.x), UnityEngine.Random.Range(-colliderSize.y, colliderSize.y));
 
         return randomPositionWhile;
     }

@@ -13,7 +13,7 @@ public class WallDestroyer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(pickObjectse.mainObject);
+        Destroy(collision.gameObject);
     }
 
 }

@@ -6,6 +6,7 @@ public class ProjectilePicked : MonoBehaviour
 {
     public pickObjects pickObjectse;
     public Player_behaviou player_Behaviou;
+
     public float velocity;
     private string controlKey;
     private Vector2 directionVector;
@@ -15,6 +16,7 @@ public class ProjectilePicked : MonoBehaviour
     {
         pickObjectse = FindObjectOfType<pickObjects>();
         player_Behaviou = FindObjectOfType<Player_behaviou>();
+        
     }
     void Update()
     {
