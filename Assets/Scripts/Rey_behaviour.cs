@@ -29,13 +29,16 @@ public class Rey_behaviour : MonoBehaviour
 
     // ------ SHOOTING ------
     public bool isShoot;
+    public int small_cnt;
+    public int medion_cnt;
+    public int large_cnt;
+    public float bullet_life;
 
     public BoxCollider2D colider_boca;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
     }
     void Update()
     {
@@ -124,14 +127,23 @@ public class Rey_behaviour : MonoBehaviour
 
     public void ShootShit()
     {
-        GameObject new_projectile = Instantiate(projectile, transform.position + new Vector3(0.0f, 0.0f, 10.0f), Quaternion.Euler(0.0f, 0.0f, 90.0f));
+        float randomAngle = UnityEngine.Random.Range(70f, -70f);
+        float radianAngle = randomAngle * Mathf.Deg2Rad;
+        Vector2 shootDirection = new Vector2(Mathf.Cos(radianAngle), Mathf.Sin(radianAngle));
+
+        
+        GameObject new_projectile = Instantiate(projectile, transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
         Rigidbody2D rb_new_projectile = new_projectile.GetComponent<Rigidbody2D>();
 
-        rb_new_projectile.velocity = new Vector2(1.0f, 1.0f) * speed;
-        // Destroy(new_projectile, 5.0f);
+        
+        rb_new_projectile.velocity = shootDirection * speed;
+
+        
+        Destroy(new_projectile, bullet_life);
 
         isShoot = true;
     }
+
 
 
 

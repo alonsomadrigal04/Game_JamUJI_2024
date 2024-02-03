@@ -7,14 +7,16 @@ TagManager:
   - Small
   - Medium
   - Large
+  - Undefined
+  - Bullets
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Bullets
   - 
   - 
   - 

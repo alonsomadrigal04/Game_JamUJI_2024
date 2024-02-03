@@ -13,6 +13,9 @@ public class Player_behaviou : MonoBehaviour
     public bool isCarry;
     public Collider2D maincollider;
 
+    //------- LIFE --------
+    public bool isAlive = true;
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -21,9 +24,34 @@ public class Player_behaviou : MonoBehaviour
 
     void Update()
     {
-        // ------ MOVEMENT ------
+        UpdateMovement();
+
+        CheckIsAlive();
+    }
+
+    private void UpdateMovement()
+    {
         Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         rb.velocity = dir.normalized * movement_speed;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("CONTACTO");
+        if (collision.gameObject.tag == "Bullets")
+        {
+            isAlive = false;
+        }
+    }
+
+    public void CheckIsAlive()
+    {
+
+        
+        if (!isAlive)
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
