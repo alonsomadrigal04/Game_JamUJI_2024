@@ -43,12 +43,16 @@ public class ProjectilePicked : MonoBehaviour
             default: break;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if(player_Behaviou.isCarry)
         {
-            player_Behaviou.isCarry = false;
-            GameObject pickedObject = pickObjectse.mainObject;
-            pickedObject.transform.parent = null;
-            pickedObject.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity, velocity) * directionVector;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                player_Behaviou.isCarry = false;
+                GameObject pickedObject = pickObjectse.mainObject;
+                pickedObject.transform.parent = null;
+                pickedObject.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity, velocity) * directionVector;
+            }
+
         }
     }
 
