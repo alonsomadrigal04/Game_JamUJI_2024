@@ -33,6 +33,13 @@ public class Rey_behaviour : MonoBehaviour
     public int medion_cnt;
     public int large_cnt;
     public float bullet_life;
+    public List<string> food_list;
+    public float smallSize = 1.0f;
+    public float mediumSize = 1.5f;
+    public float largeSize = 2.0f;
+    public GameObject smallProjectilePrefab;
+    public GameObject mediumProjectilePrefab;
+    public GameObject largeProjectilePrefab;
 
     public BoxCollider2D colider_boca;
 
@@ -78,9 +85,8 @@ public class Rey_behaviour : MonoBehaviour
                     if (phase_2 && kingEated > 0)
                     {
                         cnt_food = kingEated;
-                        kingDigested = kingEated;
+                        kingDigested += kingEated;
                         kingEated = 0;
-                        Debug.Log("Digested");
                     }
                     phase_timer = 5;
                 }
@@ -113,9 +119,33 @@ public class Rey_behaviour : MonoBehaviour
         {
             shootTimer -= Time.deltaTime;
         }
+        if (shootTimer > 0)
+        {
+            shootTimer -= Time.deltaTime;
+        }
         else if (cnt_food > 0)
         {
-            ShootShit();
+            // Cambia para coger un objeto aleatorio de food_list
+            int randomIndex = UnityEngine.Random.Range(0, food_list.Count);
+            String tagName = food_list[randomIndex];
+
+            // Ajusta tamaño y velocidad según la etiqueta del objeto
+            if (tagName == "Small")
+            {
+                ShootShit(smallProjectilePrefab, new Vector2(1.0f, 1.0f) * smallSize);
+                Debug.Log("Small_digested");
+
+            }
+            else if (tagName == "Medium")
+            {
+                ShootShit(mediumProjectilePrefab, new Vector2(1.0f, 1.0f) * mediumSize);
+            }
+            else if (tagName == "Large")
+            {
+                ShootShit(largeProjectilePrefab, new Vector2(1.0f, 1.0f) * largeSize);
+            }
+
+            food_list.RemoveAt(randomIndex);
             cnt_food -= 1;
             shootTimer = 1.0f;
         }
@@ -125,18 +155,20 @@ public class Rey_behaviour : MonoBehaviour
         }
     }
 
-    public void ShootShit()
+    public void ShootShit(GameObject projectilePrefab, Vector2 bullet_velocity)
     {
+
         float randomAngle = UnityEngine.Random.Range(70f, -70f);
         float radianAngle = randomAngle * Mathf.Deg2Rad;
         Vector2 shootDirection = new Vector2(Mathf.Cos(radianAngle), Mathf.Sin(radianAngle));
 
         
-        GameObject new_projectile = Instantiate(projectile, transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
+        GameObject new_projectile = Instantiate(projectilePrefab, transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
         Rigidbody2D rb_new_projectile = new_projectile.GetComponent<Rigidbody2D>();
+        Debug.Log("created");
 
-        
-        rb_new_projectile.velocity = shootDirection * speed;
+
+        rb_new_projectile.velocity = shootDirection * bullet_velocity;
 
         
         Destroy(new_projectile, bullet_life);

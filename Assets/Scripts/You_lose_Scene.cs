@@ -15,5 +15,18 @@ public class You_lose_Scene : MonoBehaviour
         {
             SceneManager.LoadScene(sceneToLoad);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitGame();
+        }
+    }
+
+    private void QuitGame()
+    {
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                    Application.Quit();
+        #endif
     }
 }

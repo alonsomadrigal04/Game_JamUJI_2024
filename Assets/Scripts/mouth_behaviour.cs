@@ -8,33 +8,30 @@ public class ColiderBocaScript : MonoBehaviour
     {
         Rey_behaviour reyBehaviour = GetComponentInParent<Rey_behaviour>();
 
-        if (other.CompareTag("Small"))
-        {
-            if (reyBehaviour != null)
-            {
-                reyBehaviour.kingEated++;
-                reyBehaviour.small_cnt++;
-                Destroy(other.gameObject);
-            }
-        }
-        else if (other.CompareTag("Medium"))
-        {
-            if (reyBehaviour != null)
-            {
-                reyBehaviour.kingEated++;
-                reyBehaviour.medion_cnt++;
-                Destroy(other.gameObject);
-            }
-        }
-        else if (other.CompareTag("Large"))
-        {
-            if (reyBehaviour != null)
-            {
-                reyBehaviour.kingEated++;
-                reyBehaviour.large_cnt++;
-                Destroy(other.gameObject);
-            }
-        }
+        // Obtén el tag del objeto
+        string foodTag = other.tag;
 
+        reyBehaviour.food_list.Add(foodTag);
+
+        if (reyBehaviour != null)
+        {
+            reyBehaviour.kingEated++;
+
+            if (foodTag == "Small")
+            {
+                reyBehaviour.small_cnt++;
+            }
+            else if (foodTag == "Medium")
+            {
+                reyBehaviour.medion_cnt++;
+            }
+            else if (foodTag == "Large")
+            {
+                reyBehaviour.large_cnt++;
+            }
+
+            // Destruye el objeto original
+            Destroy(other.gameObject);
+        }
     }
 }

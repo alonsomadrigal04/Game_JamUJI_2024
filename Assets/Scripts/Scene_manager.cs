@@ -16,5 +16,18 @@ public class Scene_manager : MonoBehaviour
 
             SceneManager.LoadScene(sceneToLoad);
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitGame();
+        }
+
     }
+        private void QuitGame()
+        {
+            #if UNITY_EDITOR
+                        UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                                Application.Quit();
+            #endif
+        }
 }
