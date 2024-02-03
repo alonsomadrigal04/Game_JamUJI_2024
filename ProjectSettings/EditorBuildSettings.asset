@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/You_lose.unity
+    guid: 61081fe37daabaf4e899a239790ee804
+  - enabled: 1
     path: Assets/Scenes/Joan_Scene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/Valiente_Scene.unity
+    guid: d49d3e4af8357dc4cbc945031a768578
+  - enabled: 1
+    path: Assets/Scenes/Alonso_Scene.unity
+    guid: 9f48af47905e798479b1a442db40b30d
   m_configObjects: {}
