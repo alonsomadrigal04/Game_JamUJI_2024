@@ -3,7 +3,6 @@ using UnityEngine;
 public class pickObjects : MonoBehaviour
 {
     public Player_behaviou player_Behaviou;
-    public SpawnerManager spawnerManager;
 
     Collider2D playerCollider;
     public GameObject mainObject;
@@ -12,7 +11,6 @@ public class pickObjects : MonoBehaviour
     {
         playerCollider = player_Behaviou.maincollider;
         player_Behaviou = FindObjectOfType<Player_behaviou>();
-        spawnerManager = FindObjectOfType<SpawnerManager>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -21,20 +19,30 @@ public class pickObjects : MonoBehaviour
         {
             if (collision.gameObject.tag == "Small" || collision.gameObject.tag == "Medium" || collision.gameObject.tag == "Large")
             {
-                spawnerManager.quantityObjects -= 1;
                 mainObject = collision.gameObject;
-                mainObject.transform.position = player_Behaviou.gameObject.transform.position + new Vector3(0, 1);
+                if(collision.gameObject.tag == "Small")
+                {
+                    mainObject.transform.position = player_Behaviou.gameObject.transform.position;
+                }
+                else if (collision.gameObject.tag == "Medium")
+                {
+                    mainObject.transform.position = player_Behaviou.gameObject.transform.position + new Vector3(0.0f, 0.05f);
+                }
+                else if (collision.gameObject.tag == "Large")
+                {
+                    mainObject.transform.position = player_Behaviou.gameObject.transform.position;
+                }
                 mainObject.transform.SetParent(player_Behaviou.transform);
                 player_Behaviou.isCarry = true;
 
                 // Reducir la velocidad según el tipo de objeto recogido
                 if (collision.gameObject.tag == "Medium")
                 {
-                    player_Behaviou.movement_speed = 4;
+                    player_Behaviou.movement_speed = 1.1f;
                 }
                 else if (collision.gameObject.tag == "Large")
                 {
-                    player_Behaviou.movement_speed = 2;
+                    player_Behaviou.movement_speed = 0.8f;
                 }
                 else // Si no es Medium ni Large, mantener velocidad constante en 5
                 {
