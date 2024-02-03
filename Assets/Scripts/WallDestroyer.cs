@@ -5,15 +5,20 @@ using UnityEngine;
 public class WallDestroyer : MonoBehaviour
 {
     public pickObjects pickObjectse;
+    public Player_behaviou player_Behaviou;
 
     void Update()
     {
         pickObjectse = FindObjectOfType<pickObjects>();
+        player_Behaviou = FindObjectOfType<Player_behaviou>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
+        if(!collision.transform.IsChildOf(player_Behaviou.transform))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
 }
