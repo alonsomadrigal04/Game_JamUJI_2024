@@ -22,7 +22,7 @@ public class pickObjects : MonoBehaviour
     {
         if(!player_Behaviou.isCarry)
         {
-            if (collision.gameObject.tag == "objects" )
+            if (collision.gameObject.tag == "Small" || collision.gameObject.tag == "Medium" || collision.gameObject.tag == "Large")
             {   
                 mainObject = collision.gameObject;
                 mainObject.transform.position = player_Behaviou.gameObject.transform.position + new Vector3(0,1);
