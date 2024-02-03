@@ -1,20 +1,31 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Rey_behaviour : MonoBehaviour
 {
     // ------ MOVEMENT ------
-    [SerializeField]
     Rigidbody2D rb;
     public GameObject projectile;
     public float speed;
 
+    // ------ STATS ------
+    public int kingEated = 0;
+    public int kingHungry = 10;
+    public int kingDigested = 0;
+    private bool hasSubtractedFood = false;
+
+
     // ------ PHASES ------
     public bool phase_1;
     public bool phase_2;
-    public int cnt_food;
+    public float phase_timer = 10;
+    public float countdown_timer = 3;
+    public int cnt_food = 0;
+    private float shootTimer = 1.0f;
+
 
     // ------ SHOOTING ------
     public bool isShoot;
@@ -24,18 +35,90 @@ public class Rey_behaviour : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        colider_boca = transform.Find("colider_boca").GetComponent<BoxCollider2D>();
 
     }
     void Update()
     {
         UpdatePhases();
+
+        UpdateTimer();
     }
+
     public void UpdatePhases()
     {
         if (phase_1)
         {
+            checkLifeKing();
+        }
+        else
+        {
+            attackMode();
+        }
+    }
 
+    public void UpdateTimer()
+    {
+        if (!phase_2 && cnt_food <= 0)
+        {
+            if (countdown_timer <= 0)
+            {
+                if (phase_timer >= 0)
+                {
+                    phase_timer -= Time.deltaTime;
+                }
+                else if (phase_timer <= 0)
+                {
+                    Debug.Log("Phase_change");
+                    phase_1 = !phase_1;
+                    phase_2 = !phase_2;
+                    countdown_timer = 3.0f;
+                    if (phase_2 && kingEated > 0)
+                    {
+                        cnt_food = kingEated;
+                        kingDigested = kingEated;
+                        kingEated = 0;
+                        Debug.Log("Digested");
+                    }
+                    phase_timer = 5;
+                }
+            }
+            else
+            {
+                countdown_timer -= Time.deltaTime;
+            }
+        }
+        else if(cnt_food == 0)
+        {
+            phase_1 = !phase_1;
+            phase_2 = !phase_2;
+        }
+        else if (phase_2)
+        {
+            attackMode();
+            if (cnt_food <= 0 && !hasSubtractedFood)
+            {
+                phase_1 = !phase_1;
+                phase_2 = !phase_2;
+                hasSubtractedFood = false;
+            }
+        }
+    }
+
+    public void attackMode()
+    {
+        if (shootTimer > 0)
+        {
+            shootTimer -= Time.deltaTime;
+        }
+        else if (cnt_food > 0)
+        {
+            ShootShit();
+            cnt_food -= 1;
+            shootTimer = 1.0f;
+        }
+        else
+        {
+            hasSubtractedFood = true;
         }
     }
 
@@ -48,7 +131,15 @@ public class Rey_behaviour : MonoBehaviour
         // Destroy(new_projectile, 5.0f);
 
         isShoot = true;
+    }
 
 
+
+    public void checkLifeKing()
+    {
+        if (kingEated >= kingHungry)
+        {
+            Debug.Log("You WIN!");
+        }
     }
 }
