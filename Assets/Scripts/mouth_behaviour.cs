@@ -13,7 +13,7 @@ public class ColiderBocaScript : MonoBehaviour
             if (reyBehaviour != null)
             {
                 reyBehaviour.kingEated++;
-                Destroy(gameObject);
+                Destroy(other.gameObject);
 
             }
         }
