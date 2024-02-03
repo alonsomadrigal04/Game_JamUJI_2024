@@ -26,11 +26,13 @@ public class Player_behaviou : MonoBehaviour
 
     // ------- ANIMATION -------
     public Animator animator;
+    public SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         maincollider = gameObject.GetComponent<Collider2D>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         // ------- ANIMATION -------
         animator = GetComponent<Animator>();
@@ -49,6 +51,7 @@ public class Player_behaviou : MonoBehaviour
         }
 
         animator.SetBool("IsMoving", rb.velocity.magnitude > 0);
+        animator.SetBool("isCarring", isCarry);
 
         CheckIsAlive();
         CheckDashInput();
@@ -115,6 +118,7 @@ public class Player_behaviou : MonoBehaviour
         if (collision.gameObject.tag == "Small" || collision.gameObject.tag == "Medium" || collision.gameObject.tag == "Large")
         {
             isAlive = false;
+            
         }
     }
 
