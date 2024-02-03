@@ -6,14 +6,14 @@ public class ColiderBocaScript : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("comida"))
+        if (other.CompareTag("objects"))
         {
             Rey_behaviour reyBehaviour = GetComponentInParent<Rey_behaviour>();
 
             if (reyBehaviour != null)
             {
-                reyBehaviour.cnt_food++;
-                Debug.Log("COMIDA");
+                reyBehaviour.kingEated++;
+                Destroy(gameObject);
 
             }
         }
