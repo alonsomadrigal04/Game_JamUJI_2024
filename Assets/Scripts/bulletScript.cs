@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class bulletScript : MonoBehaviour
 {
-    publi
+    public bool isCarryng;
     void Start()
     {
         

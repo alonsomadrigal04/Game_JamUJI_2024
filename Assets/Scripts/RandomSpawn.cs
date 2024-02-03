@@ -5,35 +5,40 @@ using UnityEngine;
 
 public class RandomSpawn : MonoBehaviour
 {
+    // ------ PROBABILITY ------
     private int probabilitySmall = 10;
     private int probabilityMedium = 7;
     private int probabilityLarge = 5;
     private int probabilityNumber;
     private int probabilitySpawn;
 
+    // ------ QUANTITY ------
     [HideInInspector]
     public int quantityObjects = 0;
     [HideInInspector]
     public int maxQuatityObjects = 5;
 
-    private Vector2 randomPosition;
-
+    // ------ OBJECTS ------
     public GameObject smallObject;
     public GameObject mediumObject;
     public GameObject largeObject;
 
-    private int durationTimer;
-    private float timer = 10;
+    // ------ SPAWN ------
+    private Vector2 randomPosition;
+    private Vector2 spawnPostion;
+    private int durationTimer = 3;
+    private float timer;
+    private bool canSpawn = false;
+    private int attemptCount = 0;
+    private int maxAttempts = 200;
 
     Collider2D collider;
-
 
     void Start()
     {
         probabilityNumber = probabilitySmall + probabilityMedium + probabilityLarge;
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
@@ -43,7 +48,6 @@ public class RandomSpawn : MonoBehaviour
 
     private void RandomSpawner()
     {
-       
         if(timer > durationTimer && quantityObjects < 5)
         {
             probabilitySpawn = UnityEngine.Random.Range(1, probabilityNumber);
@@ -69,5 +73,14 @@ public class RandomSpawn : MonoBehaviour
         Vector2 randomPositionWhile = colliderCenter + new Vector2 (UnityEngine.Random.Range(-colliderSize.x, colliderSize.x), UnityEngine.Random.Range(-colliderSize.y, colliderSize.y));
 
         return randomPositionWhile;
+    }
+
+    private void CheckPossibleSpawn()
+    {
+        spawnPostion = Vector2.zero;
+        while(!canSpawn && attemptCount < maxAttempts)
+        {
+           //spawnPostion = CreateRandomPosition 
+        }
     }
 }
