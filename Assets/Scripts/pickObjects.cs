@@ -20,12 +20,16 @@ public class pickObjects : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "objects")
-        {   
-            mainObject = collision.gameObject;
-            mainObject.transform.position = player_Behaviou.gameObject.transform.position + new Vector3(0,1);
-            mainObject.transform.SetParent(player_Behaviou.transform);
-            
+        if(!player_Behaviou.isCarry)
+        {
+            if (collision.gameObject.tag == "objects" )
+            {   
+                mainObject = collision.gameObject;
+                mainObject.transform.position = player_Behaviou.gameObject.transform.position + new Vector3(0,1);
+                mainObject.transform.SetParent(player_Behaviou.transform);
+                player_Behaviou.isCarry = true;
+            }
+
         }
     }
 }
