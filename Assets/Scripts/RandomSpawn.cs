@@ -41,7 +41,7 @@ public class RandomSpawn : MonoBehaviour
             probabilitySpawn = Random.Range(1, probabilityNumber);
             if (probabilitySpawn <= probabilitySmall)
             {
-                Instantiate(smallObject,)
+                //Instantiate(smallObject,)
             }
             else if(probabilitySpawn < probabilitySmall + probabilityMedium + 1)
             {
