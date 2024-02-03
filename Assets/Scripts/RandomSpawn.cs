@@ -14,6 +14,10 @@ public class RandomSpawn : MonoBehaviour
 
     private Vector2 randomPosition;
 
+    public GameObject smallObject;
+    public GameObject mediumObject;
+    public GameObject largeObject;
+
     Collider2D collider;
 
 
@@ -37,7 +41,7 @@ public class RandomSpawn : MonoBehaviour
             probabilitySpawn = Random.Range(1, probabilityNumber);
             if (probabilitySpawn <= probabilitySmall)
             {
-
+                Instantiate(smallObject,)
             }
             else if(probabilitySpawn < probabilitySmall + probabilityMedium + 1)
             {
@@ -50,7 +54,7 @@ public class RandomSpawn : MonoBehaviour
 
             randomPosition = CreateRandomPosition(collider);
 
-            // Instantiate()
+            
             
             quantityObjects++;
         }
