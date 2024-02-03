@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
@@ -21,7 +19,7 @@ public class SpawnerManager : MonoBehaviour
 
     // ------ TIMER ------
     public float timer;
-    public int durationTimer;
+    public float durationTimer;
 
     // ------ QUANTITY ------
     public int quantityObjects = 0;
@@ -33,7 +31,7 @@ public class SpawnerManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
             instance = this;
     }
 
@@ -46,89 +44,91 @@ public class SpawnerManager : MonoBehaviour
     private void Update()
     {
         Timer();
+        UpdateQuantityObjects();
     }
+
+    private void UpdateQuantityObjects()
+    {
+        GameObject[] smallObjects = GameObject.FindGameObjectsWithTag("Small");
+        GameObject[] mediumObjects = GameObject.FindGameObjectsWithTag("Medium");
+        GameObject[] largeObjects = GameObject.FindGameObjectsWithTag("Large");
+
+        quantityObjects = smallObjects.Length + mediumObjects.Length + largeObjects.Length;
+    }
+
 
     public void Timer()
     {
-        timer += Time.deltaTime;
+        
+        
         if (timer > durationTimer && quantityObjects < maxQuatityObjects)
         {
             probabilitySpawn = UnityEngine.Random.Range(1, probabilityNumber);
+            Vector2 randomPosition = GetRandomPosition();
+
             if (probabilitySpawn <= probabilitySmall)
             {
-                instance.SpawnPickableObjects(collider2D, smallObject);
+                if (CheckIfPossibleToSpawn(randomPosition))
+                {
+                    SpawnObject(smallObject, randomPosition);
+                    quantityObjects++;
+                }
             }
-            else if (probabilitySpawn < probabilitySmall + probabilityMedium + 1)
+            else if (probabilitySpawn <= probabilitySmall + probabilityMedium)
             {
-                instance.SpawnPickableObjects(collider2D, mediumObject);
+                if (CheckIfPossibleToSpawn(randomPosition))
+                {
+                    SpawnObject(mediumObject, randomPosition);
+                    quantityObjects++;
+                }
             }
             else
             {
-                instance.SpawnPickableObjects(collider2D, largeObject);
-            }
-            quantityObjects++;
-            timer = 0;
-        }
-    }
-    public void SpawnPickableObjects(Collider2D spawnableAreaCol, GameObject pickableObjects)
-    {
-        
-            Vector2 spawnPositon = RandomSpawnPosition(spawnableAreaCol);
-            GameObject spawnedObject = Instantiate(pickableObjects, spawnPositon, Quaternion.identity);
-        
-    }
-
-    private Vector2 RandomSpawnPosition(Collider2D spawnableAreaCol)
-    {
-        Vector2 spawnPosition = Vector2.zero;
-        bool spawnPosOk = false;
-
-        int attempCount = 0;
-        int maxAttemps = 200;
-
-        int layerToNotSpawnOn = LayerMask.NameToLayer("SpawnCheck");
-
-        while(!spawnPosOk && attempCount < maxAttemps)
-        {
-            spawnPosition = RandomPointInCollider(spawnableAreaCol);
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPosition, 0.5f);
-
-            bool isInvalidCollision = false;
-            foreach(Collider2D collider in colliders)
-            {
-                if(((1 << collider.gameObject.layer) & _layerObjectCantSpawnOn)!= 0)
+                if (CheckIfPossibleToSpawn(randomPosition))
                 {
-                    isInvalidCollision = true;
-                    break;
+                    SpawnObject(largeObject, randomPosition);
+                    quantityObjects++;
                 }
             }
 
-            if(!isInvalidCollision)
-            {
-                spawnPosOk = true;
-            }
-
-            attempCount++;
+            timer = 0;
         }
-
-        if(!spawnPosOk)
+        else if (timer > durationTimer)
         {
-            Debug.LogWarning("No hay lugar chacho");
-        }
 
-        return spawnPosition;
+        }
+        else
+        {
+            timer += Time.deltaTime;
+        }
     }
 
-    private Vector2 RandomPointInCollider(Collider2D collider, float offset = 1f)
+
+    private Vector2 GetRandomPosition()
     {
-        Bounds collBounds = collider.bounds;
+        float minX = collider2D.bounds.min.x;
+        float maxX = collider2D.bounds.max.x;
+        float minY = collider2D.bounds.min.y;
+        float maxY = collider2D.bounds.max.y;
 
-        Vector2 minBounds = new Vector2(collBounds.min.x + offset, collBounds.min.y + offset);
-        Vector2 maxBounds = new Vector2(collBounds.max.x - offset, collBounds.max.y - offset);
-
-        float randomX = Random.Range(minBounds.x, maxBounds.x);
-        float randomY = Random.Range(minBounds.y, maxBounds.y);
+        float randomX = UnityEngine.Random.Range(minX, maxX);
+        float randomY = UnityEngine.Random.Range(minY, maxY);
 
         return new Vector2(randomX, randomY);
+    }
+
+    private bool CheckIfPossibleToSpawn(Vector2 position)
+    {
+        float overlapRadius = 0.5f; // Ajusta este valor según sea necesario
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(position, overlapRadius, _layerObjectCantSpawnOn);
+
+        return colliders.Length == 0;
+    }
+
+
+    private void SpawnObject(GameObject objectToSpawn, Vector2 position)
+    {
+        Instantiate(objectToSpawn, position, Quaternion.identity);
     }
 }
