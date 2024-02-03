@@ -38,7 +38,7 @@ public class pickObjects : MonoBehaviour
                 }
                 else // Si no es Medium ni Large, mantener velocidad constante en 5
                 {
-                    player_Behaviou.movement_speed = 5;
+                    player_Behaviou.movement_speed = 1.5f;
                 }
             }
         }
