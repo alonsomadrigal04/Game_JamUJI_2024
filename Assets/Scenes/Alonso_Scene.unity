@@ -389,6 +389,8 @@ MonoBehaviour:
   pickObjectse: {fileID: 345574336}
   player_Behaviou: {fileID: 345574333}
   velocity: 3.12
+  animator_timer: 0
+  attacked: 0
 --- !u!4 &345574339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6393794421434331826, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
@@ -1014,7 +1016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3974549318046481049, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0159
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 3974549318046481049, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_LocalPosition.z
