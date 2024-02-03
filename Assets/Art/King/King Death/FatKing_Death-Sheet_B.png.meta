@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c9264f99211c05149b8fea8865dae407
+guid: 88b5f172b359dc942a2a47263614b717
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,13 +123,160 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FatKing_Eat-Sheet_0
+      name: FatKing_Death-Sheet_B_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1350
+        width: 480
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e0da2c0e545be44a1977075cc0f0bb
+      internalID: -117667698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FatKing_Death-Sheet_B_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 480
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a746404edcfcb49b15ce132e81c367
+      internalID: 445538121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FatKing_Death-Sheet_B_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1050
+        width: 480
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93684dd39ce9fc14795eb17ae4a95579
+      internalID: 317327329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FatKing_Death-Sheet_B_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 900
+        width: 480
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c663bd2c32ddacf45acae0019d48d9ae
+      internalID: 706092199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FatKing_Death-Sheet_B_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 750
+        width: 480
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bcb3d55ec0fd5f47a7d7bd2e953b9fa
+      internalID: -1041858565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FatKing_Death-Sheet_B_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 480
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12ebe48ea19207e45bc575acc93e415e
+      internalID: -547754630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FatKing_Death-Sheet_B_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 450
+        width: 480
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb65959805e4c9e4dae0c8606898c824
+      internalID: -746606709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FatKing_Death-Sheet_B_7
       rect:
         serializedVersion: 2
         x: 0
         y: 300
         width: 480
-        height: 100
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74f42463a4a8425408f8507155c1f1e5
-      internalID: -1209475156
+      spriteID: 1e0fd323d80898a42a9e921e049dc804
+      internalID: 2145858074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FatKing_Eat-Sheet_1
+      name: FatKing_Death-Sheet_B_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 200
+        y: 150
         width: 480
-        height: 100
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,41 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93bd131d5646bc1469693eb397a6cde4
-      internalID: 395853799
+      spriteID: 0c8eefb152944c949834b5c0ccfd97cb
+      internalID: 372851524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FatKing_Eat-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 100
-        width: 480
-        height: 100
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 50b4bd79437aec6428afd0ae052bc9f1
-      internalID: 1431977479
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FatKing_Eat-Sheet_3
+      name: FatKing_Death-Sheet_B_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 480
-        height: 100
+        height: 150
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,8 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: beb1796e1d14b9a45959ddbf75a6a866
-      internalID: -1028095424
+      spriteID: e8d6601b3db8840489337b1c988b07e4
+      internalID: -511715220
       vertices: []
       indices: 
       edges: []
@@ -217,10 +343,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FatKing_Eat-Sheet_0: -1209475156
-      FatKing_Eat-Sheet_1: 395853799
-      FatKing_Eat-Sheet_2: 1431977479
-      FatKing_Eat-Sheet_3: -1028095424
+      FatKing_Death-Sheet_B_0: -117667698
+      FatKing_Death-Sheet_B_1: 445538121
+      FatKing_Death-Sheet_B_2: 317327329
+      FatKing_Death-Sheet_B_3: 706092199
+      FatKing_Death-Sheet_B_4: -1041858565
+      FatKing_Death-Sheet_B_5: -547754630
+      FatKing_Death-Sheet_B_6: -746606709
+      FatKing_Death-Sheet_B_7: 2145858074
+      FatKing_Death-Sheet_B_8: 372851524
+      FatKing_Death-Sheet_B_9: -511715220
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
