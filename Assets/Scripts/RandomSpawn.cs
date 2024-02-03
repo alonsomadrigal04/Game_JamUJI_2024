@@ -15,28 +15,34 @@ public class RandomSpawn : MonoBehaviour
     // ------ QUANTITY ------
     [HideInInspector]
     public int quantityObjects = 0;
-    [HideInInspector]
+    [Header("QUANTITY")]
     public int maxQuatityObjects = 5;
 
     // ------ OBJECTS ------
     public GameObject smallObject;
     public GameObject mediumObject;
     public GameObject largeObject;
+    public List<GameObject> colObjectList;
 
     // ------ SPAWN ------
+    [Header("SPAWN")]
     private Vector2 randomPosition;
     private Vector2 spawnPostion;
-    private int durationTimer = 3;
-    private float timer;
-    private bool canSpawn = false;
-    private int attemptCount = 0;
-    private int maxAttempts = 200;
+    public int durationTimer = 3;
+    public float timer;
+    private bool canSpawn = true;
+    int layerCheck;
+
+
+
+    Collider2D spawnColliderObject;
 
     Collider2D collider;
 
     void Start()
     {
-        probabilityNumber = probabilitySmall + probabilityMedium + probabilityLarge;
+        
+        layerCheck = LayerMask.NameToLayer("SpawnCheck");
     }
 
     void Update()
@@ -44,24 +50,35 @@ public class RandomSpawn : MonoBehaviour
         timer += Time.deltaTime;
         collider = GetComponent<Collider2D>();
         RandomSpawner();
+        
     }
 
     private void RandomSpawner()
     {
-        if(timer > durationTimer && quantityObjects < 5)
+        if(timer > durationTimer && quantityObjects < maxQuatityObjects)
         {
-            probabilitySpawn = UnityEngine.Random.Range(1, probabilityNumber);
-            randomPosition = CreateRandomPosition(GetComponent<Collider2D>());
-            if (probabilitySpawn <= probabilitySmall)
-                Instantiate(smallObject, randomPosition, Quaternion.identity);
-
-            else if (probabilitySpawn < probabilitySmall + probabilityMedium + 1)
-                Instantiate(mediumObject, randomPosition, Quaternion.identity);
-
-            else
-                Instantiate(largeObject, randomPosition, Quaternion.identity);
-            quantityObjects++;
-            timer = 0;
+            if(canSpawn)
+            {
+                probabilitySpawn = UnityEngine.Random.Range(1, probabilityNumber);
+                randomPosition = CreateRandomPosition(GetComponent<Collider2D>());
+                if (probabilitySpawn <= probabilitySmall)
+                {
+                    GameObject newObjectSmall = Instantiate(smallObject, randomPosition, Quaternion.identity);
+                    CheckPossibleSpawn(newObjectSmall);
+                }
+                else if (probabilitySpawn < probabilitySmall + probabilityMedium + 1)
+                {
+                    GameObject newObjectMedium = Instantiate(mediumObject, randomPosition, Quaternion.identity);
+                    CheckPossibleSpawn(newObjectMedium);
+                }
+                else
+                {
+                    GameObject newObjectLarge = Instantiate(largeObject, randomPosition, Quaternion.identity);
+                    CheckPossibleSpawn(newObjectLarge);
+                }
+                quantityObjects++;
+                timer = 0;
+            }
         }
     }
 
@@ -75,12 +92,43 @@ public class RandomSpawn : MonoBehaviour
         return randomPositionWhile;
     }
 
-    private void CheckPossibleSpawn()
+    private void CheckPossibleSpawn(GameObject objectToSpawn)
     {
-        spawnPostion = Vector2.zero;
+        canSpawn = false;
+        int attemptCount = 0;
+        int maxAttempts = 200;
+        
         while(!canSpawn && attemptCount < maxAttempts)
         {
-           //spawnPostion = CreateRandomPosition 
+            Debug.Log("Preparando item");
+            bool isTouchingCollider = false;
+            foreach (GameObject spawnObject in colObjectList)
+            {
+                Collider2D colliderNewObject = spawnObject.GetComponent<Collider2D>();
+                Collider2D colObjectToSpawn = objectToSpawn.GetComponent<Collider2D>();
+                isTouchingCollider = false;
+                
+                if(colObjectToSpawn.IsTouchingLayers(layerCheck))
+                {
+                    Debug.Log("3");
+                    isTouchingCollider = true;
+                    break;
+                }
+            }
+                        
+
+            if(!isTouchingCollider)
+            {
+                Debug.Log("4");
+                canSpawn = true;
+                colObjectList.Add(objectToSpawn);
+                break;
+            }
+
+            attemptCount++;
         }
+        Debug.Log("5");
+        return;
+
     }
 }
