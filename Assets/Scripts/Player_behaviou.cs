@@ -48,6 +48,8 @@ public class Player_behaviou : MonoBehaviour
             UpdateMovement();
         }
 
+        animator.SetBool("IsMoving", rb.velocity.magnitude > 0);
+
         CheckIsAlive();
         CheckDashInput();
         UpdateTimer();
@@ -61,12 +63,11 @@ public class Player_behaviou : MonoBehaviour
 
             if (!isCarry)
             {
-                rb.velocity = dir.normalized * movement_speed;
+                rb.velocity = dir.normalized * 1.5f;
             }
             else
             {
                 rb.velocity = dir.normalized * movement_speed;
-
             }
 
             // Guardar la dirección del jugador antes de realizar el dash
@@ -74,7 +75,7 @@ public class Player_behaviou : MonoBehaviour
             {
                 dashDirection = dir.normalized;
             }
-            movement_speed = 7;
+            
         }
     }
 
@@ -89,7 +90,7 @@ public class Player_behaviou : MonoBehaviour
     private void CheckDashInput()
     {
         // Detectar la entrada para realizar el dash
-        if (Input.GetKeyDown(KeyCode.C) && !isDashing)
+        if (Input.GetKeyDown(KeyCode.M) && !isDashing)
         {
             isDashing = true;
             dashTimer = dashDuration;

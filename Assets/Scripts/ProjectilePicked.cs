@@ -10,6 +10,8 @@ public class ProjectilePicked : MonoBehaviour
     public float velocity;
     private string controlKey;
     private Vector2 directionVector;
+    public float animator_timer = 0.5f;
+    public bool attacked;
 
 
     private void Start()
@@ -22,6 +24,21 @@ public class ProjectilePicked : MonoBehaviour
     {
         controlDirection();
         shootItem();
+        counterTimer();
+    }
+
+    public void counterTimer()
+    {
+        if(attacked)
+        {
+            animator_timer += Time.deltaTime;
+            if (animator_timer > 0.5f)
+            {
+                attacked = false;
+                player_Behaviou.animator.SetBool("IsAttacking", false);
+                animator_timer = 0;
+            }
+        }
     }
 
     private void shootItem()
@@ -47,10 +64,16 @@ public class ProjectilePicked : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                attacked= true;
                 player_Behaviou.isCarry = false;
                 GameObject pickedObject = pickObjectse.mainObject;
                 pickedObject.transform.parent = null;
                 pickedObject.GetComponent<Rigidbody2D>().velocity = new Vector2(velocity, velocity) * directionVector;
+                
+                player_Behaviou.animator.SetBool("IsAttacking", true);
+
+                
+
             }
 
         }
