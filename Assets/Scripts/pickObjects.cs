@@ -3,16 +3,16 @@ using UnityEngine;
 public class pickObjects : MonoBehaviour
 {
     public Player_behaviou player_Behaviou;
-    public RandomSpawn randomSpawn;
+    public SpawnerManager spawnerManager;
 
     Collider2D playerCollider;
     public GameObject mainObject;
 
     void Start()
     {
-        randomSpawn = FindObjectOfType<RandomSpawn>();
         playerCollider = player_Behaviou.maincollider;
         player_Behaviou = FindObjectOfType<Player_behaviou>();
+        spawnerManager = FindObjectOfType<SpawnerManager>();
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -21,7 +21,7 @@ public class pickObjects : MonoBehaviour
         {
             if (collision.gameObject.tag == "Small" || collision.gameObject.tag == "Medium" || collision.gameObject.tag == "Large")
             {
-                randomSpawn.quantityObjects -= 1;
+                spawnerManager.quantityObjects -= 1;
                 mainObject = collision.gameObject;
                 mainObject.transform.position = player_Behaviou.gameObject.transform.position + new Vector3(0, 1);
                 mainObject.transform.SetParent(player_Behaviou.transform);
