@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
@@ -85,12 +86,12 @@ public class SpawnerManager : MonoBehaviour
         int attempCount = 0;
         int maxAttemps = 200;
 
-        int layerToNotSpawnOn = LayerMask.NameToLayer("");
+        int layerToNotSpawnOn = LayerMask.NameToLayer("SpawnCheck");
 
         while(!spawnPosOk && attempCount < maxAttemps)
         {
             spawnPosition = RandomPointInCollider(spawnableAreaCol);
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPosition, 0.25f);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(spawnPosition, 0.5f);
 
             bool isInvalidCollision = false;
             foreach(Collider2D collider in colliders)
@@ -101,7 +102,6 @@ public class SpawnerManager : MonoBehaviour
                     break;
                 }
             }
-
 
             if(!isInvalidCollision)
             {

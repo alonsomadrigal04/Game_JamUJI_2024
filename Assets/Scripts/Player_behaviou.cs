@@ -74,7 +74,7 @@ public class Player_behaviou : MonoBehaviour
             {
                 dashDirection = dir.normalized;
             }
-            movement_speed = 1.5f;
+            movement_speed = 7;
         }
     }
 
