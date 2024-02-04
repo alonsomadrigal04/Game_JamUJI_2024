@@ -20,9 +20,7 @@ public class WinsAndLose : MonoBehaviour
     public GameObject key;
     public SpriteRenderer esc;
     public SpriteRenderer enter;
-
-    public Player_behaviou player_shit;
-    public Rey_behaviour rey_shit;
+    public SpriteRenderer background;
 
 
     private void Awake()
@@ -31,23 +29,20 @@ public class WinsAndLose : MonoBehaviour
         wins.transform.position = initialPositionWins;
         king.transform.position = initialPositionKing;
 
-        player_shit = FindObjectOfType<Player_behaviou>();
-        rey_shit= FindObjectOfType<Rey_behaviour>();
-
-        esc.DOFade(0f, 0.1f);
-        enter.DOFade(0f, 0.1f);
+        esc.DOFade(0.0f, 0.1f);
+        enter.DOFade(0.0f, 0.1f);
+        background.DOFade(0.0f, 0.1f);
     }
     void Update()
     {
-        if(!player_shit.isAlive)
+        if(Input.GetKeyDown(KeyCode.G))
         {
             GrannyWins();
         }
-        else if(rey_shit.theKingIsDead)
+        if(Input.GetKeyDown(KeyCode.K))
         {
             KingWins();
         }
-        
         if (Input.GetKeyDown(KeyCode.R))
         {
             granny.transform.position = initialPositionGranny;
@@ -58,23 +53,25 @@ public class WinsAndLose : MonoBehaviour
 
     private void GrannyWins()
     {
-        granny.transform.DOMove(perfectPositionGranny, 1f).SetEase(Ease.InSine).OnComplete(WordWins);
+        background.DOFade(0.6f, 2.0f).SetEase(Ease.OutCubic);
+        granny.transform.DOMove(perfectPositionGranny, 1).SetEase(Ease.InSine).OnComplete(WordWins);
     }
 
     private void KingWins()
     {
-        king.transform.DOMove(perfectPositionKing, 1f).SetEase(Ease.InSine).OnComplete(WordWins);
+        background.DOFade(0.6f, 2.0f).SetEase(Ease.OutCubic);
+        king.transform.DOMove(perfectPositionKing, 1).SetEase(Ease.InSine).OnComplete(WordWins);
     }
 
     private void WordWins()
     {
-        wins.transform.DOMove(perfectPositionWins, 1f).SetEase(Ease.InSine).OnComplete(KeyMotion);
+        wins.transform.DOMove(perfectPositionWins, 1).SetEase(Ease.InSine).OnComplete(KeyMotion);
     }
 
     private void KeyMotion()
     {
-        esc.DOFade(100f, 1.0f);
-        enter.DOFade(100f, 1.0f);
+        esc.DOFade(1.0f, 1.0f).SetEase(Ease.OutCubic);
+        enter.DOFade(1.0f, 1.0f).SetEase(Ease.OutCubic);
         key.transform.DOMoveY(transform.position.y + 0.2f, 1.0f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
 
         //0.2f, 1.5f
