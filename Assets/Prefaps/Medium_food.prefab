@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8170225956154322309}
   - component: {fileID: 2295064571645922804}
   - component: {fileID: -3088469197808424733}
-  - component: {fileID: -8326116574042601138}
+  - component: {fileID: 8978992182158755174}
   m_Layer: 6
   m_Name: Medium_food
   m_TagString: Medium
@@ -114,8 +114,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!58 &-8326116574042601138
-CircleCollider2D:
+--- !u!61 &8978992182158755174
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -146,9 +146,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.001475513, y: 0}
+  m_Offset: {x: 0.016221866, y: -0.1069051}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.49122497, y: 0.42978764}
+    oldSize: {x: 0.5, y: 0.5}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.10013908
+  m_Size: {x: 0.24521503, y: 0.073966146}
+  m_EdgeRadius: 0
 --- !u!1 &4328877191789706213
 GameObject:
   m_ObjectHideFlags: 0

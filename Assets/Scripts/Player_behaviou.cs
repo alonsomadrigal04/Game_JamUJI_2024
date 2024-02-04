@@ -101,7 +101,7 @@ public class Player_behaviou : MonoBehaviour
                     rb.velocity = dir.normalized * movement_speed;
                 }
 
-                // Guardar la dirección del jugador antes de realizar el dash
+                // Guardar la direcciï¿½n del jugador antes de realizar el dash
                 if (dir != Vector2.zero)
                 {
                     dashDirection = dir.normalized;
