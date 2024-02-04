@@ -229,7 +229,7 @@ public class Rey_behaviour : MonoBehaviour
                         kingEated = 0;
 
                     }
-                    phase_timer = 5;
+                    phase_timer = 10;
                 }
             }
             else
@@ -250,6 +250,9 @@ public class Rey_behaviour : MonoBehaviour
             {
                 phase_1 = !phase_1;
                 phase_2 = !phase_2;
+                kingDigested -= 2;
+                if(kingDigested <= 0)
+                { kingDigested = 0; }
                 //KingMovement();
                 hasSubtractedFood = false;
             }
@@ -292,6 +295,8 @@ public class Rey_behaviour : MonoBehaviour
             // Instanciar la bala
             GameObject new_projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
             Rigidbody2D rb_new_projectile = new_projectile.GetComponent<Rigidbody2D>();
+
+            CameraShakeManager.instance.Screenshake(0.1f);
 
             ProjectileBehavior projectileBehavior = new_projectile.AddComponent<ProjectileBehavior>();
             //projectileBehavior.bulletLife = bullet_life;
@@ -377,6 +382,8 @@ public class Rey_behaviour : MonoBehaviour
 
         float radianAngle = randomAngle * Mathf.Deg2Rad;
         Vector2 shootDirection = new Vector2(Mathf.Cos(radianAngle), Mathf.Sin(radianAngle));
+
+        CameraShakeManager.instance.Screenshake(0.9f);
 
         GameObject new_projectile = Instantiate(projectilePrefab, transform.position + new Vector3(0.0f, -0.1f, 0.0f), Quaternion.identity);
 

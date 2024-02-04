@@ -254,19 +254,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5095458613759084489, guid: 5248a9e92f70d0b4cb3157d8ba41d246, type: 3}
       propertyPath: m_Size.x
-      value: 6.321676
+      value: 6.0113244
       objectReference: {fileID: 0}
     - target: {fileID: 5095458613759084489, guid: 5248a9e92f70d0b4cb3157d8ba41d246, type: 3}
       propertyPath: m_Size.y
-      value: 2.7714124
+      value: 2.394556
       objectReference: {fileID: 0}
     - target: {fileID: 5095458613759084489, guid: 5248a9e92f70d0b4cb3157d8ba41d246, type: 3}
       propertyPath: m_Offset.x
-      value: -0.2111094
+      value: -0.18894124
       objectReference: {fileID: 0}
     - target: {fileID: 5095458613759084489, guid: 5248a9e92f70d0b4cb3157d8ba41d246, type: 3}
       propertyPath: m_Offset.y
-      value: 0.051383317
+      value: -0.114876986
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -284,6 +284,26 @@ PrefabInstance:
     - target: {fileID: 116797331786640235, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
       propertyPath: m_Name
       value: Confetti
+      objectReference: {fileID: 0}
+    - target: {fileID: 116797331786640235, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 971874502036395592, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_SortMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 971874502036395592, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 971874502036395592, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 971874502036395592, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -662224361
       objectReference: {fileID: 0}
     - target: {fileID: 1236880129416537809, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
       propertyPath: InitialModule.maxNumParticles
@@ -307,15 +327,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.064
+      value: -0.052
       objectReference: {fileID: 0}
     - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.69
+      value: 1.729
       objectReference: {fileID: 0}
     - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.028505014
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1035,6 +1055,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &645705785 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 351875416607747507, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+  m_PrefabInstance: {fileID: 7108177978075549425}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160239190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2295c4982a18ee408c0b36db1a6f49e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &953249409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1728,15 +1759,15 @@ SpriteRenderer:
   m_SortingLayerID: 1641682027
   m_SortingLayer: 3
   m_SortingOrder: 44
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &1808708167
@@ -1917,6 +1948,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4978854791524137071, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -4978854791524137071, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -662224361
+      objectReference: {fileID: 0}
+    - target: {fileID: -4978854791524137071, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
       propertyPath: m_PreviewTimeScale
       value: 1
       objectReference: {fileID: 0}
@@ -2062,11 +2101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6393794421434331826, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.066
+      value: -0.047
       objectReference: {fileID: 0}
     - target: {fileID: 6393794421434331826, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.833
+      value: -0.26
       objectReference: {fileID: 0}
     - target: {fileID: 6393794421434331826, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2323,7 +2362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6390886808531725499, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_Size.x
-      value: 1.1368887
+      value: 0.7446848
       objectReference: {fileID: 0}
     - target: {fileID: 6390886808531725499, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_Size.y
@@ -2331,7 +2370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6390886808531725499, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_Offset.x
-      value: -0.017110944
+      value: 0.009170771
       objectReference: {fileID: 0}
     - target: {fileID: 6390886808531725499, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_Offset.y
@@ -2350,12 +2389,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 506840105617562452, guid: c1e198c074ccc4f4b994226739df5831, type: 3}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: scrMouth
+      value: 
+      objectReference: {fileID: 645705785}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: deadSound
       value: 
       objectReference: {fileID: 8300000, guid: 974ffbf66408c754088b749640f0ac1f, type: 3}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: largeSize
-      value: 1.7
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: smallSize
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: endColor.b
@@ -2366,12 +2413,24 @@ PrefabInstance:
       value: 0.6901961
       objectReference: {fileID: 0}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: kingHungry
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: mediumSize
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: eatingSound
       value: 
       objectReference: {fileID: 8300000, guid: e4515b788ac445b4686300d7b9fff5af, type: 3}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: phase_timer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: kingDigested
-      value: 24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: particulasVomito
@@ -2379,7 +2438,7 @@ PrefabInstance:
       objectReference: {fileID: 6898684058683777094, guid: 33f776834ed4c4f47814506fbf96360c, type: 3}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: CuantityOfBullets
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: burpsSounds.Array.size

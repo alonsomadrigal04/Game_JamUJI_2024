@@ -81,13 +81,13 @@ public class MainLetter_behaviour : MonoBehaviour
             timerAnimator += Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            StartPosition(granny, initialPositionGranny);
-            StartPosition(vs, initialPositionVs);
-            StartPosition(king, initialPositionKing);
-            contador = 0;
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    StartPosition(granny, initialPositionGranny);
+        //    StartPosition(vs, initialPositionVs);
+        //    StartPosition(king, initialPositionKing);
+        //    contador = 0;
+        //}
 
         titleTiempo += Time.deltaTime;
 

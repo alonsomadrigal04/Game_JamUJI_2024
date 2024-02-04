@@ -5,13 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/You_lose.unity
     guid: 61081fe37daabaf4e899a239790ee804
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Joan_Scene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+    guid: 77ee919a21d5bbb48aa523633d66575d
+  - enabled: 0
     path: Assets/Scenes/Valiente_Scene.unity
     guid: d49d3e4af8357dc4cbc945031a768578
   - enabled: 1

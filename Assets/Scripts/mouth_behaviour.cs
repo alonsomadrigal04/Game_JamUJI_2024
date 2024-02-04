@@ -2,6 +2,7 @@ using DG.Tweening;
 using JoanRuiz.Mipolla;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ public class mouth_behaviour : MonoBehaviour
     public Rey_behaviour reyBehaviour;
     public Animator animatoring;
     SimpleFlash simpleFlash;
+    public float timer_shit;
 
     private void Start()
     {
@@ -25,6 +27,17 @@ public class mouth_behaviour : MonoBehaviour
         //animatoring.SetBool("isEated", eated);
         reyBehaviour.animator.SetBool("isEating", reyBehaviour.eated);
         animatoring.SetBool("isEated", reyBehaviour.eated);
+
+        if(reyBehaviour.eated == true)
+        {
+            timer_shit += Time.deltaTime;
+        }
+
+        if(timer_shit >= 0.4f)
+        {
+            timer_shit = 0;
+            reyBehaviour.eated = false;
+        }
     }
 
     void TragarAlways()
@@ -43,7 +56,7 @@ public class mouth_behaviour : MonoBehaviour
         if (reyBehaviour != null)
         {
             reyBehaviour.kingEated++;
-            CameraShakeManager.instance.Screenshake(0.2f);
+            CameraShakeManager.instance.Screenshake(0.4f);
             simpleFlash.Flash();
             Debug.Log("he llegado aqui");
 

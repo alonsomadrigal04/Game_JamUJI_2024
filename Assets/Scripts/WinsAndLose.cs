@@ -82,12 +82,12 @@ public class WinsAndLose : MonoBehaviour
 
             }
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            granny.transform.position = initialPositionGranny;
-            wins.transform.position = initialPositionWins;
-            king.transform.position = initialPositionKing;
-        }
+        //if (Input.GetKeyDown(KeyCode.R))
+        //{
+        //    granny.transform.position = initialPositionGranny;
+        //    wins.transform.position = initialPositionWins;
+        //    king.transform.position = initialPositionKing;
+        //}
 
         if(win_bool)
         {
