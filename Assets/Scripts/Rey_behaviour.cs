@@ -96,6 +96,9 @@ public class Rey_behaviour : MonoBehaviour
     //------ BOOLEANOS ------
     public bool theKingIsDead = false;
 
+    //------ SOUNDS ------
+    public AudioClip eatingSound;
+
     public bool eated;
 
 
@@ -122,6 +125,11 @@ public class Rey_behaviour : MonoBehaviour
         Color lerpedColor = Color.Lerp(startColor, endColor, (float)kingDigested/ kingHungry);
         spriteRenderer.color = lerpedColor;
 
+    }
+
+    private void PlayRandomDyingSound()
+    {
+        AudioSource.PlayClipAtPoint(eatingSound, transform.position);
     }
 
     public void UpdatePhases()
@@ -180,7 +188,7 @@ public class Rey_behaviour : MonoBehaviour
             {
                 phase_1 = !phase_1;
                 phase_2 = !phase_2;
-                KingMovement();
+                //KingMovement();
                 hasSubtractedFood = false;
             }
         }
@@ -236,31 +244,31 @@ public class Rey_behaviour : MonoBehaviour
     {
         float randomAngle = 0f;
 
-    // Determine the angle based on the king's current position
-    switch (actualPosition)
-    {
-        case 1: // Left
-            randomAngle = UnityEngine.Random.Range(70f, -70f);
-            break;
-        case 2: // Right
-            randomAngle = UnityEngine.Random.Range(-180f, -110f);
-            break;
-        case 3: // Up
-            randomAngle = UnityEngine.Random.Range(-25f, -156f);
-            break;
-        case 4: // Down
-            randomAngle = UnityEngine.Random.Range(160f, 200f);
-            break;
-        default:
-            break;
-    }
+        // Determine the angle based on the king's current position
+        switch (actualPosition)
+        {
+            case 1: // Left
+                randomAngle = UnityEngine.Random.Range(70f, -70f);
+                break;
+            case 2: // Right
+                randomAngle = UnityEngine.Random.Range(-180f, -110f);
+                break;
+            case 3: // Up
+                randomAngle = UnityEngine.Random.Range(-25f, -156f);
+                break;
+            case 4: // Down
+                randomAngle = UnityEngine.Random.Range(160f, 200f);
+                break;
+            default:
+                break;
+        }
 
         float radianAngle = randomAngle * Mathf.Deg2Rad;
         Vector2 shootDirection = new Vector2(Mathf.Cos(radianAngle), Mathf.Sin(radianAngle));
 
         GameObject new_projectile = Instantiate(projectilePrefab, transform.position + new Vector3(0.0f, -0.1f, 0.0f), Quaternion.identity);
         Rigidbody2D rb_new_projectile = new_projectile.GetComponent<Rigidbody2D>();
-
+         
         rb_new_projectile.velocity = shootDirection * bullet_velocity;
 
         SpriteRenderer projectileRenderer = new_projectile.GetComponent<SpriteRenderer>();

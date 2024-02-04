@@ -21,6 +21,7 @@ public class ColiderBocaScript : MonoBehaviour
     {
         //animatoring.SetBool("isEated", eated);
         reyBehaviour.animator.SetBool("isEating", reyBehaviour.eated);
+        animatoring.SetBool("isEated", reyBehaviour.eated);
     }
 
     void OnTriggerEnter2D(Collider2D other)

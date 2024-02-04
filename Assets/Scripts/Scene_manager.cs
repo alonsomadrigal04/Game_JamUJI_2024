@@ -19,7 +19,6 @@ public class Scene_manager : MonoBehaviour
     {
         if (player == null)
         {
-            Debug.Log("¡El jugador no está presente!");
 
             SceneManager.LoadScene(sceneToLoad);
         }

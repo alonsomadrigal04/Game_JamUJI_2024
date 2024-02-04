@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class Player_behaviou : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class Player_behaviou : MonoBehaviour
     // ------- ANIMATION -------
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+
+    // ------- SOUNDS -------
+    public AudioClip[] dashSounds;
+    public AudioClip[] DyingSounds;
+    public AudioClip[] ThrowSounds;
 
 
     void Start()
@@ -96,11 +102,14 @@ public class Player_behaviou : MonoBehaviour
         {
             isDashing = true;
             dashTimer = dashDuration;
+            PlayRandomDashSound();
         }
     }
 
     private void Dash()
     {
+        
+
         rb.velocity = dashDirection * dashSpeed;
 
         dashTimer -= Time.deltaTime;
@@ -110,6 +119,43 @@ public class Player_behaviou : MonoBehaviour
             isDashing = false;
         }
     }
+
+    private void PlayRandomDashSound()
+    {
+        if (dashSounds.Length > 0)
+        {
+            int randomIndex = Random.Range(0, dashSounds.Length);
+            AudioClip randomClip = dashSounds[randomIndex];
+
+            // Play the selected dash sound
+            AudioSource.PlayClipAtPoint(randomClip, transform.position);
+        }
+    }
+
+    private void PlayRandomThrowinghSound()
+    {
+        if (ThrowSounds.Length > 0)
+        {
+            int randomIndex = Random.Range(0, ThrowSounds.Length);
+            AudioClip randomClip = ThrowSounds[randomIndex];
+
+            // Play the selected dash sound
+            AudioSource.PlayClipAtPoint(randomClip, transform.position);
+        }
+    }
+
+    private void PlayRandomDyingSound()
+    {
+        if (DyingSounds.Length > 0)
+        {
+            int randomIndex = Random.Range(0, DyingSounds.Length);
+            AudioClip randomClip = DyingSounds[randomIndex];
+
+            // Play the selected dash sound
+            AudioSource.PlayClipAtPoint(randomClip, transform.position);
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
