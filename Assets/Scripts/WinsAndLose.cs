@@ -32,6 +32,9 @@ public class WinsAndLose : MonoBehaviour
     public bool hassounded;
     public float timer_sound;
 
+    public float win_timer;
+    public bool win_bool;
+
     public bool sounplayed;
 
 
@@ -59,6 +62,7 @@ public class WinsAndLose : MonoBehaviour
         if(king_shit.theKingIsDead && !hasanimated)
         {
             GrannyWins();
+
             hasanimated = true;
         }
         if(hasanimated)
@@ -88,6 +92,8 @@ public class WinsAndLose : MonoBehaviour
             AudioSource.PlayClipAtPoint(king_winsSound, transform.position);
             sounplayed = true;
         }
+
+
     }
 
     private void GrannyWins()
