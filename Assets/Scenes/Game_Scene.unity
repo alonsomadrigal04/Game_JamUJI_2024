@@ -998,6 +998,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7257366280352409540, guid: b9ddf246660055d4a9d361916d042faa, type: 3}
+      propertyPath: king_winsSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 33f2424afd2386647abdadb420a32e98, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

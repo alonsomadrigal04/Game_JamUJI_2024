@@ -13,11 +13,16 @@ public class SpawnAnimation : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            BasicAnimation01();
-        }
+        //if(Input.GetKeyDown(KeyCode.L))
+        //{
+        //    BasicAnimation01();
+        //}
 
+    }
+
+    private void Awake()
+    {
+        BasicAnimation01();
     }
 
     private void BasicAnimation01() 
