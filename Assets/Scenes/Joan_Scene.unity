@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement_speed: 1.5
+  canMove: 0
   isCarry: 0
   maincollider: {fileID: 345574332}
   isAlive: 1
@@ -348,6 +349,12 @@ MonoBehaviour:
   dashDuration: 0.2
   animator: {fileID: 345574341}
   spriteRenderer: {fileID: 0}
+  dashSounds: []
+  DyingSounds: []
+  ThrowSounds: []
+  timer_dance: 0
+  iniciado: 0
+  hasdance: 0
 --- !u!114 &345574336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_Behaviou: {fileID: 345574333}
   mainObject: {fileID: 0}
+  pickSound: {fileID: 0}
 --- !u!114 &345574337
 MonoBehaviour:
   m_ObjectHideFlags: 0
