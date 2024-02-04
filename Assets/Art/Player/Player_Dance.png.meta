@@ -165,6 +165,27 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: Player_Dance_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73b1769feb292514b8728da60f7297fe
+      internalID: -1072133967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: Player_Dance_2
       rect:
         serializedVersion: 2
@@ -179,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73b1769feb292514b8728da60f7297fe
-      internalID: -1072133967
+      spriteID: 67e26b30c1566ab41a47dfbf62735c0a
+      internalID: -2021728984
       vertices: []
       indices: 
       edges: []
@@ -200,8 +221,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67e26b30c1566ab41a47dfbf62735c0a
-      internalID: -2021728984
+      spriteID: 48f3c4315da195d4aa0123ca90a31088
+      internalID: -365579275
       vertices: []
       indices: 
       edges: []
@@ -221,8 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48f3c4315da195d4aa0123ca90a31088
-      internalID: -365579275
+      spriteID: 10a753cb42cdbcd468b2c3e02a34b011
+      internalID: -638284544
       vertices: []
       indices: 
       edges: []
@@ -242,8 +263,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10a753cb42cdbcd468b2c3e02a34b011
-      internalID: -638284544
+      spriteID: dfd75aa455b4af643960374cba0006bf
+      internalID: -301080482
       vertices: []
       indices: 
       edges: []
@@ -263,8 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfd75aa455b4af643960374cba0006bf
-      internalID: -301080482
+      spriteID: 7c9bd6d21afa60f4a8722d96095749f4
+      internalID: 922112548
       vertices: []
       indices: 
       edges: []
@@ -284,8 +305,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c9bd6d21afa60f4a8722d96095749f4
-      internalID: 922112548
+      spriteID: ebc2603261c87b54eaf22b1f050d06e5
+      internalID: -1744652210
       vertices: []
       indices: 
       edges: []
@@ -305,8 +326,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ebc2603261c87b54eaf22b1f050d06e5
-      internalID: -1744652210
+      spriteID: 0ea33a09657cb3843a506e73bed109d0
+      internalID: -2064822327
       vertices: []
       indices: 
       edges: []
@@ -316,27 +337,6 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 288
-        y: 0
-        width: 32
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.2}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ea33a09657cb3843a506e73bed109d0
-      internalID: -2064822327
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_Dance_10
-      rect:
-        serializedVersion: 2
-        x: 320
         y: 0
         width: 32
         height: 32
@@ -366,15 +366,15 @@ TextureImporter:
     nameFileIdTable:
       Player_Dance_0: -1968000420
       Player_Dance_1: -1021895393
-      Player_Dance_10: 1444526257
-      Player_Dance_2: -1072133967
-      Player_Dance_3: -2021728984
-      Player_Dance_4: -365579275
-      Player_Dance_5: -638284544
-      Player_Dance_6: -301080482
-      Player_Dance_7: 922112548
-      Player_Dance_8: -1744652210
-      Player_Dance_9: -2064822327
+      Player_Dance_10: -1072133967
+      Player_Dance_2: -2021728984
+      Player_Dance_3: -365579275
+      Player_Dance_4: -638284544
+      Player_Dance_5: -301080482
+      Player_Dance_6: 922112548
+      Player_Dance_7: -1744652210
+      Player_Dance_8: -2064822327
+      Player_Dance_9: 1444526257
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
