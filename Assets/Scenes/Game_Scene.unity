@@ -265,6 +265,83 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5248a9e92f70d0b4cb3157d8ba41d246, type: 3}
+--- !u!1001 &325256037
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 116797331786640235, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_Name
+      value: Confetti
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236880129416537809, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 467
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236880129416537809, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 23.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236880129416537809, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236880129416537809, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236880129416537809, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: InitialModule.startLifetime.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.064
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.028505014
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510565408432376593, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
 --- !u!1 &345574328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7127443695588118314, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
@@ -372,9 +449,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d6ef11eac8ef334db1ead06cae77709, type: 3}
   - {fileID: 8300000, guid: 70511f85afb5b6c49a5adcb02a49ebd7, type: 3}
   - {fileID: 8300000, guid: 87ca5598d3f4320459a5bb3ea3447a43, type: 3}
+  winMusic: {fileID: 8300000, guid: 7809dd53bbab4464cbdedacac3c1a3b9, type: 3}
   timer_dance: 0
   iniciado: 0
   hasdance: 0
+  winnlose: {fileID: 0}
 --- !u!114 &345574336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1002,6 +1081,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7257366280352409540, guid: b9ddf246660055d4a9d361916d042faa, type: 3}
+      propertyPath: confeti
+      value: 
+      objectReference: {fileID: 1616763864}
+    - target: {fileID: 7257366280352409540, guid: b9ddf246660055d4a9d361916d042faa, type: 3}
+      propertyPath: granny_wins
+      value: 
+      objectReference: {fileID: 8300000, guid: 01e6687d1e6d3b945ac3fb0df7a819f0, type: 3}
+    - target: {fileID: 7257366280352409540, guid: b9ddf246660055d4a9d361916d042faa, type: 3}
       propertyPath: king_winsSound
       value: 
       objectReference: {fileID: 8300000, guid: 33f2424afd2386647abdadb420a32e98, type: 3}
@@ -1391,6 +1478,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!198 &1616763864 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1236880129416537809, guid: 7500bc13a6e865e4ea17f612700cfc6c, type: 3}
+  m_PrefabInstance: {fileID: 325256037}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1713545622
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,8 +1809,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2598739744389928560, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2598739744389928560, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2598739744389928560, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -318740441
       objectReference: {fileID: 0}
     - target: {fileID: 6393794421434331826, guid: f8c7ad89e0cacb840a8d7c499af15331, type: 3}
       propertyPath: m_LocalScale.x
@@ -2031,7 +2131,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: e4515b788ac445b4686300d7b9fff5af, type: 3}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: kingDigested
-      value: 14
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: particulasVomito
@@ -2127,3 +2227,4 @@ SceneRoots:
   - {fileID: 571204570}
   - {fileID: 1217189374}
   - {fileID: 953249409}
+  - {fileID: 325256037}
