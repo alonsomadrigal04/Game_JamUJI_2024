@@ -16,45 +16,77 @@ public class MainLetter_behaviour : MonoBehaviour
     private Vector2 perfectPositionVs = new Vector2(0.4286305f, 0.07242402f);
     private Vector2 perfectPositionKing = new Vector2(1.50763f, 0.009423941f);
 
-    // ------ VELOCITY ------
-    public float velocity;
+    // ------ TIEMPO ------
+    public float tiempo;
 
     // ------ WORDS ------
     public GameObject granny;
-    private GameObject vs;
-    private GameObject king;
+    public GameObject vs;
+    public GameObject king;
 
     // ------ TIMER ------
-    private float timer;
-    private float timerTime;
+    public float timer;
+    private float timerTime = 1;
+    private bool timerCheck = false;
+
+    public int contador = 0;
 
     private void Awake()
     {
         StartPosition(granny, initialPositionGranny);
+        StartPosition(vs, initialPositionVs);
+        StartPosition(king, initialPositionKing);
     }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R))
-            StartPosition(granny, initialPositionGranny);
+        if(timerCheck)
+        {
+            timer += Time.deltaTime;
+        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (contador == 0)
+        {
             WordAnimation(granny, perfectPositionGranny);
+            Timer();
+        }
+        else if (contador == 1)
+        {
+            WordAnimation(vs, perfectPositionVs);
+            Timer();
+        }
+        else if (contador == 2)
+        {
+            WordAnimation(king, perfectPositionKing);
+            Timer();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            StartPosition(granny, initialPositionGranny);
+            StartPosition(vs, initialPositionVs);
+            StartPosition(king, initialPositionKing);
+            contador = 0;
+        }
     }
 
     private void WordAnimation(GameObject gameObjectWord, Vector2 perfectPositon)
     {
-        gameObjectWord.transform.DOMove(perfectPositon, velocity).SetEase(Ease.InExpo);
+        gameObjectWord.transform.DOMove(perfectPositon, tiempo).SetEase(Ease.InSine);
     }
 
     private void StartPosition(GameObject gameObject, Vector2 initialPosition)
     {
         gameObject.transform.position = initialPosition;
+    }
+
+    private void Timer()
+    {
+        timerCheck = true;
+        if(timer > timerTime)
+        {
+            timer = 0;
+            timerCheck = false;
+            contador++;
+        }
     }
 }
