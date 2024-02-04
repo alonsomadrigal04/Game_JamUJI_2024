@@ -47,12 +47,14 @@ public class ProjectilePicked : MonoBehaviour
         {
             case "A":
                 directionVector = new Vector2(-1f, 0f);
+                player_Behaviou.spriteRenderer.flipX = false;
                 break;
             case "S":
                 directionVector = new Vector2(0f, -1f);
                 break;
             case "D":
                 directionVector = new Vector2(1f, 0f);
+                player_Behaviou.spriteRenderer.flipX = true;
                 break;
             case "W":
                 directionVector = new Vector2(0f, 1f);

@@ -16,6 +16,9 @@ public class SpawnerManager : MonoBehaviour
     public GameObject smallObject;
     public GameObject mediumObject;
     public GameObject largeObject;
+    public Sprite[] imageSmall;
+    public Sprite[] imageMedium;
+    public Sprite[] imageLarge;
 
     // ------ TIMER ------
     public float timer;
@@ -59,8 +62,6 @@ public class SpawnerManager : MonoBehaviour
 
     public void Timer()
     {
-        
-        
         if (timer > durationTimer && quantityObjects < maxQuatityObjects)
         {
             probabilitySpawn = UnityEngine.Random.Range(1, probabilityNumber);
@@ -68,38 +69,43 @@ public class SpawnerManager : MonoBehaviour
 
             if (probabilitySpawn <= probabilitySmall)
             {
-                if (CheckIfPossibleToSpawn(randomPosition))
-                {
-                    SpawnObject(smallObject, randomPosition);
-                    quantityObjects++;
-                }
+                SpawnRandomObject(smallObject, imageSmall, randomPosition);
+                quantityObjects++;
             }
             else if (probabilitySpawn <= probabilitySmall + probabilityMedium)
             {
-                if (CheckIfPossibleToSpawn(randomPosition))
-                {
-                    SpawnObject(mediumObject, randomPosition);
-                    quantityObjects++;
-                }
+                SpawnRandomObject(mediumObject, imageMedium, randomPosition);
+                quantityObjects++;
             }
             else
             {
-                if (CheckIfPossibleToSpawn(randomPosition))
-                {
-                    SpawnObject(largeObject, randomPosition);
-                    quantityObjects++;
-                }
+                SpawnRandomObject(largeObject, imageLarge, randomPosition);
+                quantityObjects++;
             }
 
             timer = 0;
         }
         else if (timer > durationTimer)
         {
-
+            // ... (código adicional si es necesario)
         }
         else
         {
             timer += Time.deltaTime;
+        }
+    }
+
+    private void SpawnRandomObject(GameObject objectToSpawn, Sprite[] spriteArray, Vector2 position)
+    {
+        if (CheckIfPossibleToSpawn(position))
+        {
+            int randomIndex = UnityEngine.Random.Range(0, spriteArray.Length);
+            Sprite selectedSprite = spriteArray[randomIndex];
+
+            // Aquí puedes hacer algo con el sprite seleccionado, como asignarlo al objetoToSpawn
+            objectToSpawn.GetComponent<SpriteRenderer>().sprite = selectedSprite;
+
+            SpawnObject(objectToSpawn, position);
         }
     }
 
