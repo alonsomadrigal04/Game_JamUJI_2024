@@ -114,7 +114,6 @@ public class Player_behaviou : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("CONTACTO");
         if (collision.gameObject.tag == "Small" || collision.gameObject.tag == "Medium" || collision.gameObject.tag == "Large")
         {
             isAlive = false;
