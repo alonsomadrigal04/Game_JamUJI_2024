@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3194113118607521334}
   - component: {fileID: 8537664002279188282}
   - component: {fileID: 3121347869687738708}
+  - component: {fileID: 8434576082854410048}
   m_Layer: 0
   m_Name: Rey_Gordo
   m_TagString: Untagged
@@ -227,6 +228,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf938a15af70c6478a0b6aa7af19878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8434576082854410048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8602588547051204286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf06844d2ca62e4888d0179bb06fcc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: 1f3950c45b95d344ba08edfc2c2535e2, type: 2}
+  duration: 0
 --- !u!1 &9126503587928880844
 GameObject:
   m_ObjectHideFlags: 0
