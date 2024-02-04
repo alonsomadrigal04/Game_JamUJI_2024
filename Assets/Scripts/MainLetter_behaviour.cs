@@ -18,6 +18,8 @@ public class MainLetter_behaviour : MonoBehaviour
 
     // ------ TIEMPO ------
     public float tiempo;
+    public float titleTiempo;
+    public bool hasReproduced;
 
     // ------ WORDS ------
     public GameObject granny;
@@ -40,7 +42,13 @@ public class MainLetter_behaviour : MonoBehaviour
     private float timerTimeAnimator = 1;
     private bool timerCheckAnimator = false;
 
+    // ------ TIMER ANIMATOR ------
+    public Player_behaviou player_shit;
+
     private bool checkerFade = false;
+
+    public AudioClip Title_sound;
+    public AudioClip Shine;
 
 
 
@@ -55,6 +63,7 @@ public class MainLetter_behaviour : MonoBehaviour
         StartPosition(granny, initialPositionGranny);
         StartPosition(vs, initialPositionVs);
         StartPosition(king, initialPositionKing);
+        player_shit = GetComponent<Player_behaviou>();
     }
     void Update()
     {
@@ -76,11 +85,32 @@ public class MainLetter_behaviour : MonoBehaviour
             StartPosition(king, initialPositionKing);
             contador = 0;
         }
+
+        titleTiempo += Time.deltaTime;
+
+        CheckTempo();
+    }
+    private void PlayRandomEatingSound()
+    {
+        AudioSource.PlayClipAtPoint(Shine, transform.position);
+    }
+    public void CheckTempo()
+    {
+        if(titleTiempo >= 1.2f)
+        {
+            if (!hasReproduced)
+            {
+                AudioSource.PlayClipAtPoint(Title_sound, transform.position);
+                hasReproduced = true;
+                
+            }
+        }
     }
 
     private void WordAnimation(GameObject gameObjectWord, Vector2 perfectPositon)
     {
         gameObjectWord.transform.DOMove(perfectPositon, tiempo).SetEase(Ease.InSine);
+        
     }
 
     private void StartPosition(GameObject gameObject, Vector2 initialPosition)
@@ -140,5 +170,6 @@ public class MainLetter_behaviour : MonoBehaviour
         grannyFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
         vsFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
         kingFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
+        player_shit.canMove = true;
     }
 }

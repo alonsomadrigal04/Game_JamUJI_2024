@@ -376,6 +376,7 @@ public class Rey_behaviour : MonoBehaviour
         PlayRandomDBurpSound();
         ReproducirParticulas();
 
+
         Rigidbody2D rb_new_projectile = new_projectile.GetComponent<Rigidbody2D>();
          
         rb_new_projectile.velocity = shootDirection * bullet_velocity;

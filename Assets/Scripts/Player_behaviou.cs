@@ -9,6 +9,7 @@ public class Player_behaviou : MonoBehaviour
     // ------ MOVEMENT ------
     Rigidbody2D rb;
     public float movement_speed;
+    public bool canMove = false;
 
     //------- CARRY --------
     public bool isCarry;
@@ -66,24 +67,28 @@ public class Player_behaviou : MonoBehaviour
 
     private void UpdateMovement()
     {
-        if (isAlive)
+        if(canMove)
         {
-            Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            if (isAlive)
+            {
+                Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-            if (!isCarry)
-            {
-                rb.velocity = dir.normalized * 1.5f;
-            }
-            else
-            {
-                rb.velocity = dir.normalized * movement_speed;
+                if (!isCarry)
+                {
+                    rb.velocity = dir.normalized * 1.5f;
+                }
+                else
+                {
+                    rb.velocity = dir.normalized * movement_speed;
+                }
+
+                // Guardar la dirección del jugador antes de realizar el dash
+                if (dir != Vector2.zero)
+                {
+                    dashDirection = dir.normalized;
+                }
             }
 
-            // Guardar la dirección del jugador antes de realizar el dash
-            if (dir != Vector2.zero)
-            {
-                dashDirection = dir.normalized;
-            }
         }
     }
 
