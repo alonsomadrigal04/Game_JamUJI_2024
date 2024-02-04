@@ -94,7 +94,9 @@ public class Rey_behaviour : MonoBehaviour
     public Sprite[] largePictures;
 
     //------ BOOLEANOS ------
-    bool theKingIsDead = false;
+    public bool theKingIsDead = false;
+
+    public bool eated;
 
 
     void Start()
@@ -113,9 +115,11 @@ public class Rey_behaviour : MonoBehaviour
         }
         UpdatePhases();
 
+        checkLifeKing();
+
         UpdateTimer();
 
-        Color lerpedColor = Color.Lerp(startColor, endColor, (float)kingDigested / kingHungry);
+        Color lerpedColor = Color.Lerp(startColor, endColor, (float)kingDigested/ kingHungry);
         spriteRenderer.color = lerpedColor;
 
     }
@@ -182,6 +186,11 @@ public class Rey_behaviour : MonoBehaviour
         }
     }
 
+    public void AnimationControler()
+    {
+        eated = false;
+    }
+
     public void attackMode()
     {
         if (shootTimer > 0)
@@ -237,7 +246,7 @@ public class Rey_behaviour : MonoBehaviour
             randomAngle = UnityEngine.Random.Range(-180f, -110f);
             break;
         case 3: // Up
-            randomAngle = UnityEngine.Random.Range(-20f, 20f);
+            randomAngle = UnityEngine.Random.Range(-25f, -156f);
             break;
         case 4: // Down
             randomAngle = UnityEngine.Random.Range(160f, 200f);
@@ -249,7 +258,7 @@ public class Rey_behaviour : MonoBehaviour
         float radianAngle = randomAngle * Mathf.Deg2Rad;
         Vector2 shootDirection = new Vector2(Mathf.Cos(radianAngle), Mathf.Sin(radianAngle));
 
-        GameObject new_projectile = Instantiate(projectilePrefab, transform.position + new Vector3(2.0f, 0.0f, 0.0f), Quaternion.identity);
+        GameObject new_projectile = Instantiate(projectilePrefab, transform.position + new Vector3(0.0f, -0.1f, 0.0f), Quaternion.identity);
         Rigidbody2D rb_new_projectile = new_projectile.GetComponent<Rigidbody2D>();
 
         rb_new_projectile.velocity = shootDirection * bullet_velocity;
@@ -280,9 +289,10 @@ public class Rey_behaviour : MonoBehaviour
 
     public void checkLifeKing()
     {
-        if (kingEated >= kingHungry)
+        if (kingDigested >= kingHungry)
         {
             theKingIsDead = true;
+            animator.SetBool("isDead", true);
         }
     }
 

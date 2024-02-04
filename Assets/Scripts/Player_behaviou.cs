@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class Player_behaviou : MonoBehaviour
@@ -22,11 +23,11 @@ public class Player_behaviou : MonoBehaviour
     public float dashSpeed = 10f;
     public float dashDuration = 0.2f;
     private float dashTimer = 0f;
-    
 
     // ------- ANIMATION -------
     public Animator animator;
     public SpriteRenderer spriteRenderer;
+
 
     void Start()
     {
@@ -36,7 +37,6 @@ public class Player_behaviou : MonoBehaviour
 
         // ------- ANIMATION -------
         animator = GetComponent<Animator>();
-
     }
 
     void Update()
@@ -60,7 +60,7 @@ public class Player_behaviou : MonoBehaviour
 
     private void UpdateMovement()
     {
-        if(isAlive)
+        if (isAlive)
         {
             Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
@@ -78,13 +78,12 @@ public class Player_behaviou : MonoBehaviour
             {
                 dashDirection = dir.normalized;
             }
-            
         }
     }
 
     private void UpdateTimer()
     {
-        if(!isAlive)
+        if (!isAlive)
         {
             timer_animation -= Time.deltaTime;
         }
@@ -117,16 +116,23 @@ public class Player_behaviou : MonoBehaviour
         if (collision.gameObject.tag == "Small" || collision.gameObject.tag == "Medium" || collision.gameObject.tag == "Large")
         {
             isAlive = false;
-            
+
+            // Disable the Rigidbody and this script to prevent further movement
+            rb.velocity = Vector2.zero;
+            rb.isKinematic = true;
+
+            Destroy(collision.gameObject);
         }
     }
+
+
 
     public void CheckIsAlive()
     {
         if (!isAlive)
         {
             animator.SetBool("isDead", true);
-            if(timer_animation <= 0)
+            if (timer_animation <= 0)
             {
                 Destroy(gameObject);
             }
