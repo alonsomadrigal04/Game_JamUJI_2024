@@ -43,7 +43,7 @@ public class MainLetter_behaviour : MonoBehaviour
     private bool timerCheckAnimator = false;
 
     // ------ TIMER ANIMATOR ------
-    public Player_behaviou player_shit;
+    Player_behaviou player_shit;
 
     private bool checkerFade = false;
 
@@ -63,8 +63,10 @@ public class MainLetter_behaviour : MonoBehaviour
         StartPosition(granny, initialPositionGranny);
         StartPosition(vs, initialPositionVs);
         StartPosition(king, initialPositionKing);
-        player_shit = GetComponent<Player_behaviou>();
+        player_shit = FindObjectOfType<Player_behaviou>();
     }
+
+
     void Update()
     {
         MainAnimation();
@@ -162,6 +164,7 @@ public class MainLetter_behaviour : MonoBehaviour
     private void EndShineAnimation()
     {
         shine.DOFade(0f, 0.1f).OnComplete(CheckerFade);
+        player_shit.canMove = true;
     }
 
     private void CheckerFade()
@@ -170,6 +173,6 @@ public class MainLetter_behaviour : MonoBehaviour
         grannyFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
         vsFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
         kingFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
-        player_shit.canMove = true;
+        
     }
 }

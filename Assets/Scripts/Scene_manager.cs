@@ -20,7 +20,7 @@ public class Scene_manager : MonoBehaviour
         if (player == null)
         {
 
-            SceneManager.LoadScene(sceneToLoad);
+            //SceneManager.LoadScene(sceneToLoad);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

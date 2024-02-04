@@ -15,6 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Valiente_Scene.unity
     guid: d49d3e4af8357dc4cbc945031a768578
   - enabled: 1
-    path: Assets/Scenes/Alonso_Scene.unity
+    path: Assets/Scenes/Game_Scene.unity
     guid: 9f48af47905e798479b1a442db40b30d
   m_configObjects: {}

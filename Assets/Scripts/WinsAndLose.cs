@@ -21,6 +21,9 @@ public class WinsAndLose : MonoBehaviour
     public SpriteRenderer esc;
     public SpriteRenderer enter;
 
+    public Player_behaviou player_shit;
+    public Rey_behaviour rey_shit;
+
 
     private void Awake()
     {
@@ -28,19 +31,23 @@ public class WinsAndLose : MonoBehaviour
         wins.transform.position = initialPositionWins;
         king.transform.position = initialPositionKing;
 
+        player_shit = FindObjectOfType<Player_behaviou>();
+        rey_shit= FindObjectOfType<Rey_behaviour>();
+
         esc.DOFade(0f, 0.1f);
         enter.DOFade(0f, 0.1f);
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
+        if(!player_shit.isAlive)
         {
             GrannyWins();
         }
-        if(Input.GetKeyDown(KeyCode.K))
+        else if(rey_shit.theKingIsDead)
         {
             KingWins();
         }
+        
         if (Input.GetKeyDown(KeyCode.R))
         {
             granny.transform.position = initialPositionGranny;
@@ -51,17 +58,17 @@ public class WinsAndLose : MonoBehaviour
 
     private void GrannyWins()
     {
-        granny.transform.DOMove(perfectPositionGranny, 1).SetEase(Ease.InSine).OnComplete(WordWins);
+        granny.transform.DOMove(perfectPositionGranny, 1f).SetEase(Ease.InSine).OnComplete(WordWins);
     }
 
     private void KingWins()
     {
-        king.transform.DOMove(perfectPositionKing, 1).SetEase(Ease.InSine).OnComplete(WordWins);
+        king.transform.DOMove(perfectPositionKing, 1f).SetEase(Ease.InSine).OnComplete(WordWins);
     }
 
     private void WordWins()
     {
-        wins.transform.DOMove(perfectPositionWins, 1).SetEase(Ease.InSine).OnComplete(KeyMotion);
+        wins.transform.DOMove(perfectPositionWins, 1f).SetEase(Ease.InSine).OnComplete(KeyMotion);
     }
 
     private void KeyMotion()
