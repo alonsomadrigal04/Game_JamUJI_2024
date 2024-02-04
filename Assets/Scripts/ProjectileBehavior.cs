@@ -8,11 +8,18 @@ public class ProjectileBehavior : MonoBehaviour
     public AudioClip[] destroyingSounds;
 
     private bool hasPlayedSound = false;
+    public Rigidbody2D rb;
+
+    public Vector2 velocity;
+
 
     private void Start()
     {
         // Destroy the projectile after bulletLife seconds
         Destroy(gameObject, bulletLife);
+        rb = GetComponent<Rigidbody2D>();
+        velocity= rb.velocity;
+
     }
 
     private void OnDestroy()
@@ -21,6 +28,14 @@ public class ProjectileBehavior : MonoBehaviour
         {
             PlayRandomDyingSound();
             hasPlayedSound = true;
+        }
+    }
+
+    private void Update()
+    {
+        if(rb.velocity == new Vector2(0.0f, 0.0f))
+        {
+            rb.velocity += new Vector2(1.2f, 1.1f);
         }
     }
 

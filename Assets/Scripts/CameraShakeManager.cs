@@ -12,10 +12,6 @@ public class CameraShakeManager : MonoBehaviour
         shakeSource = GetComponent<CinemachineImpulseSource>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) Screenshake(5f);
-    }
 
     public void Screenshake(float shakeForce) => shakeSource.GenerateImpulseWithForce(shakeForce);
 }

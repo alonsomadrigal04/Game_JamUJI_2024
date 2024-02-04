@@ -1,4 +1,5 @@
 using DG.Tweening;
+using JoanRuiz.Mipolla;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,10 +11,12 @@ public class ColiderBocaScript : MonoBehaviour
 
     public Rey_behaviour reyBehaviour;
     public Animator animatoring;
+    SimpleFlash simpleFlash;
 
     private void Start()
     {
         reyBehaviour = GetComponentInParent<Rey_behaviour>();
+        simpleFlash = GetComponentInParent<SimpleFlash>();
 
     }
 
@@ -35,6 +38,8 @@ public class ColiderBocaScript : MonoBehaviour
         if (reyBehaviour != null)
         {
             reyBehaviour.kingEated++;
+            CameraShakeManager.instance.Screenshake(0.2f);
+            simpleFlash.Flash();
             Debug.Log("he llegado aqui");
 
             if (foodTag == "Small")
