@@ -32,6 +32,7 @@ public class WinsAndLose : MonoBehaviour
     public AudioClip granny_wins;
     public bool hassounded;
     public float timer_sound;
+    public ParticleSystem confeti;
 
     public float win_timer;
     public bool win_bool;
@@ -47,6 +48,7 @@ public class WinsAndLose : MonoBehaviour
         granny.transform.position = initialPositionGranny;
         wins.transform.position = initialPositionWins;
         king.transform.position = initialPositionKing;
+        
 
         player_shit = FindObjectOfType<Player_behaviou>();
         king_shit = FindObjectOfType<Rey_behaviour>();
@@ -54,6 +56,7 @@ public class WinsAndLose : MonoBehaviour
         esc.DOFade(0.0f, 0.1f);
         enter.DOFade(0.0f, 0.1f);
         background.DOFade(0.0f, 0.1f);
+        confeti.Stop();
     }
     void Update()
     {
@@ -115,6 +118,7 @@ public class WinsAndLose : MonoBehaviour
     {
         background.DOFade(0.6f, 2.0f).SetEase(Ease.OutCubic);
         granny.transform.DOMove(perfectPositionGranny, 1).SetEase(Ease.InSine).OnComplete(WordWins);
+        confeti.Play();
     }
 
     public void KingWins()
