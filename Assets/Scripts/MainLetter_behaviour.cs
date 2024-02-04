@@ -18,6 +18,8 @@ public class MainLetter_behaviour : MonoBehaviour
 
     // ------ TIEMPO ------
     public float tiempo;
+    public float titleTiempo;
+    public bool hasReproduced;
 
     // ------ WORDS ------
     public GameObject granny;
@@ -30,8 +32,6 @@ public class MainLetter_behaviour : MonoBehaviour
 
     public SpriteRenderer shine;
 
-    public SpriteRenderer background;
-
     // ------ TIMER ------
     public float timer;
     private float timerTime = 1;
@@ -42,7 +42,14 @@ public class MainLetter_behaviour : MonoBehaviour
     private float timerTimeAnimator = 1;
     private bool timerCheckAnimator = false;
 
+    // ------ TIMER ANIMATOR ------
+    Player_behaviou player_shit;
+
     private bool checkerFade = false;
+
+    public AudioClip Title_sound;
+    public AudioClip main_Theme;
+    public AudioClip Shine;
 
 
 
@@ -57,8 +64,10 @@ public class MainLetter_behaviour : MonoBehaviour
         StartPosition(granny, initialPositionGranny);
         StartPosition(vs, initialPositionVs);
         StartPosition(king, initialPositionKing);
-
+        player_shit = FindObjectOfType<Player_behaviou>();
     }
+
+
     void Update()
     {
         MainAnimation();
@@ -79,11 +88,33 @@ public class MainLetter_behaviour : MonoBehaviour
             StartPosition(king, initialPositionKing);
             contador = 0;
         }
+
+        titleTiempo += Time.deltaTime;
+
+        CheckTempo();
+    }
+    private void PlayRandomEatingSound()
+    {
+        AudioSource.PlayClipAtPoint(Shine, transform.position);
+        AudioSource.PlayClipAtPoint(main_Theme, transform.position);
+    }
+    public void CheckTempo()
+    {
+        if(titleTiempo >= 1.2f)
+        {
+            if (!hasReproduced)
+            {
+                AudioSource.PlayClipAtPoint(Title_sound, transform.position);
+                hasReproduced = true;
+                
+            }
+        }
     }
 
     private void WordAnimation(GameObject gameObjectWord, Vector2 perfectPositon)
     {
         gameObjectWord.transform.DOMove(perfectPositon, tiempo).SetEase(Ease.InSine);
+        
     }
 
     private void StartPosition(GameObject gameObject, Vector2 initialPosition)
@@ -109,7 +140,7 @@ public class MainLetter_behaviour : MonoBehaviour
         {
             timerAnimator = 0;
             timerCheck = false;
-            shine.DOFade(1.0f, 0.2f).SetEase(Ease.OutCubic);
+            shine.DOFade(100f, 0.1f);
             animator.SetBool("Shine", true);
         }
     }
@@ -134,15 +165,16 @@ public class MainLetter_behaviour : MonoBehaviour
     }
     private void EndShineAnimation()
     {
-        shine.DOFade(0.0f, 0.1f).OnComplete(CheckerFade);
+        shine.DOFade(0f, 0.1f).OnComplete(CheckerFade);
+        player_shit.canMove = true;
     }
 
     private void CheckerFade()
     {
         Debug.Log("EstoyInside");
-        grannyFade.DOFade(0.0f, 2.0f).SetEase(Ease.OutCubic);
-        vsFade.DOFade(0.0f, 2.0f).SetEase(Ease.OutCubic);
-        kingFade.DOFade(0.0f, 2.0f).SetEase(Ease.OutCubic);
-        background.DOFade(0.0f, 2.0f);
+        grannyFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
+        vsFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
+        kingFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
+        
     }
 }

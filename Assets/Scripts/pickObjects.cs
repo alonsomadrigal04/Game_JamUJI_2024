@@ -6,11 +6,17 @@ public class pickObjects : MonoBehaviour
 
     Collider2D playerCollider;
     public GameObject mainObject;
+    public AudioClip pickSound;
 
     void Start()
     {
         playerCollider = player_Behaviou.maincollider;
         player_Behaviou = FindObjectOfType<Player_behaviou>();
+    }
+
+    private void PlayRandomDyingSound()
+    {
+        AudioSource.PlayClipAtPoint(pickSound, transform.position);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -26,7 +32,7 @@ public class pickObjects : MonoBehaviour
                 }
                 else if (collision.gameObject.tag == "Medium")
                 {
-                    mainObject.transform.position = player_Behaviou.gameObject.transform.position + new Vector3(0.0f, 0.05f);
+                    mainObject.transform.position = player_Behaviou.gameObject.transform.position;
                 }
                 else if (collision.gameObject.tag == "Large")
                 {
@@ -34,6 +40,7 @@ public class pickObjects : MonoBehaviour
                 }
                 mainObject.transform.SetParent(player_Behaviou.transform);
                 player_Behaviou.isCarry = true;
+                PlayRandomDyingSound();
 
                 // Reducir la velocidad según el tipo de objeto recogido
                 if (collision.gameObject.tag == "Medium")

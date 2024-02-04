@@ -19,9 +19,8 @@ public class Scene_manager : MonoBehaviour
     {
         if (player == null)
         {
-            Debug.Log("¡El jugador no está presente!");
 
-            SceneManager.LoadScene(sceneToLoad);
+            //SceneManager.LoadScene(sceneToLoad);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {

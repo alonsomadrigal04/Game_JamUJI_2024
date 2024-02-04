@@ -88,6 +88,8 @@ public class Rey_behaviour : MonoBehaviour
 
     // ------ SHOOTING ------ 
     public Animator animator;
+    public ParticleSystem particulasVomito;
+
 
     //------ IMAGES_BULLETS ------
     public Sprite[] smallPictures;
@@ -96,6 +98,21 @@ public class Rey_behaviour : MonoBehaviour
 
     //------ BOOLEANOS ------
     public bool theKingIsDead = false;
+    public bool destoySound;
+    public float destroySound_timer;
+
+    //------ SOUNDS ------
+    public AudioClip eatingSound;
+    public AudioClip deadSound;
+    public AudioClip[] destroyingBullets;
+    public AudioClip[] burpsSounds;
+    
+
+    ////------ FINALDEAD ------
+    public int CuantityOfBullets = 10;
+    public int WavesCount = 5;  // Número de oleadas
+    public int BulletsPerWave = 20;  // Número de balas por oleada
+
 
     public bool eated;
 
@@ -108,6 +125,7 @@ public class Rey_behaviour : MonoBehaviour
     }
     void Update()
     {
+
         if(control)
            OutMovement();
         if (activateTimer)
@@ -125,6 +143,53 @@ public class Rey_behaviour : MonoBehaviour
 
     }
 
+    private void PlayRandomEatingSound()
+    {
+        AudioSource.PlayClipAtPoint(eatingSound, transform.position);
+        
+    }
+
+    private void PlayRandomDBurpSound()
+    {
+        if (burpsSounds.Length > 0)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, burpsSounds.Length);
+            AudioClip randomClip = burpsSounds[randomIndex];
+
+            // Play the selected dash sound
+            AudioSource.PlayClipAtPoint(randomClip, transform.position);
+        }
+    }
+
+    void ReproducirParticulas()
+    {
+        // Verificar si el sistema de partículas es válido
+        if (particulasVomito != null)
+        {
+            // Detener el sistema de partículas antes de reproducir
+            particulasVomito.Stop();
+
+            // Reproducir las partículas
+            particulasVomito.Play();
+        }
+        else
+        {
+            Debug.LogError("El componente ParticleSystem no está asignado.");
+        }
+    }
+
+    private void PlayRandomDyingSound()
+    {
+        if (destroyingBullets.Length > 0)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, destroyingBullets.Length);
+            AudioClip randomClip = destroyingBullets[randomIndex];
+
+            // Play the selected dash sound
+            AudioSource.PlayClipAtPoint(randomClip, transform.position);
+        }
+    }
+
     public void UpdatePhases()
     {
         if (phase_1)
@@ -135,6 +200,7 @@ public class Rey_behaviour : MonoBehaviour
         {
             attackMode();
         }
+
     }
 
     public void UpdateTimer()
@@ -181,11 +247,59 @@ public class Rey_behaviour : MonoBehaviour
             {
                 phase_1 = !phase_1;
                 phase_2 = !phase_2;
-                KingMovement();
+                //KingMovement();
                 hasSubtractedFood = false;
             }
         }
+
     }
+
+    public void KingDead()
+    {
+        theKingIsDead = true;
+        animator.SetBool("isDead", true);
+
+        AudioSource.PlayClipAtPoint(deadSound, transform.position);
+
+        // Crear una explosión de balas
+        for (int i = 0; i < CuantityOfBullets; i++)
+        {
+            // Seleccionar aleatoriamente el tamaño de la bala
+            float randomSize = UnityEngine.Random.Range(0.0f, 1.0f);
+            GameObject projectilePrefab;
+
+            if (randomSize < 0.33f)
+            {
+                projectilePrefab = smallProjectilePrefab;
+            }
+            else if (randomSize < 0.66f)
+            {
+                projectilePrefab = mediumProjectilePrefab;
+            }
+            else
+            {
+                projectilePrefab = largeProjectilePrefab;
+            }
+
+            // Seleccionar aleatoriamente la dirección de la bala
+            float randomAngle = UnityEngine.Random.Range(0f, -180f);
+            float radianAngle = randomAngle * Mathf.Deg2Rad;
+            Vector2 shootDirection = new Vector2(Mathf.Cos(radianAngle), Mathf.Sin(radianAngle));
+
+            // Instanciar la bala
+            GameObject new_projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            Rigidbody2D rb_new_projectile = new_projectile.GetComponent<Rigidbody2D>();
+
+            ProjectileBehavior projectileBehavior = new_projectile.AddComponent<ProjectileBehavior>();
+            projectileBehavior.bulletLife = bullet_life;
+            projectileBehavior.destroyingSounds = destroyingBullets;
+
+            rb_new_projectile.velocity = shootDirection * 1.2f;
+
+            // ... (puedes ajustar otras propiedades, como el color, la vida de la bala, etc.)
+        }
+    }
+
 
     public void AnimationControler()
     {
@@ -237,31 +351,36 @@ public class Rey_behaviour : MonoBehaviour
     {
         float randomAngle = 0f;
 
-    // Determine the angle based on the king's current position
-    switch (actualPosition)
-    {
-        case 1: // Left
-            randomAngle = UnityEngine.Random.Range(70f, -70f);
-            break;
-        case 2: // Right
-            randomAngle = UnityEngine.Random.Range(-180f, -110f);
-            break;
-        case 3: // Up
-            randomAngle = UnityEngine.Random.Range(-25f, -156f);
-            break;
-        case 4: // Down
-            randomAngle = UnityEngine.Random.Range(160f, 200f);
-            break;
-        default:
-            break;
-    }
+        // Determine the angle based on the king's current position
+        switch (actualPosition)
+        {
+            case 1: // Left
+                randomAngle = UnityEngine.Random.Range(70f, -70f);
+                break;
+            case 2: // Right
+                randomAngle = UnityEngine.Random.Range(-180f, -110f);
+                break;
+            case 3: // Up
+                randomAngle = UnityEngine.Random.Range(-25f, -156f);
+                break;
+            case 4: // Down
+                randomAngle = UnityEngine.Random.Range(160f, 200f);
+                break;
+            default:
+                break;
+        }
 
         float radianAngle = randomAngle * Mathf.Deg2Rad;
         Vector2 shootDirection = new Vector2(Mathf.Cos(radianAngle), Mathf.Sin(radianAngle));
 
         GameObject new_projectile = Instantiate(projectilePrefab, transform.position + new Vector3(0.0f, -0.1f, 0.0f), Quaternion.identity);
-        Rigidbody2D rb_new_projectile = new_projectile.GetComponent<Rigidbody2D>();
 
+        PlayRandomDBurpSound();
+        ReproducirParticulas();
+
+
+        Rigidbody2D rb_new_projectile = new_projectile.GetComponent<Rigidbody2D>();
+         
         rb_new_projectile.velocity = shootDirection * bullet_velocity;
 
         SpriteRenderer projectileRenderer = new_projectile.GetComponent<SpriteRenderer>();
@@ -283,7 +402,12 @@ public class Rey_behaviour : MonoBehaviour
             projectileRenderer.sprite = largePictures[randomIndex];
         }
 
-        Destroy(new_projectile, bullet_life);
+        // Attach ProjectileBehavior component to the projectile
+        ProjectileBehavior projectileBehavior = new_projectile.AddComponent<ProjectileBehavior>();
+        projectileBehavior.bulletLife = bullet_life;
+        projectileBehavior.destroyingSounds = destroyingBullets;
+
+
         isShoot = true;
     }
 
@@ -292,8 +416,9 @@ public class Rey_behaviour : MonoBehaviour
     {
         if (kingDigested >= kingHungry)
         {
-            theKingIsDead = true;
             animator.SetBool("isDead", true);
+            GameObject primerHijo = transform.GetChild(0).gameObject;
+            primerHijo.SetActive(false);
         }
     }
 
