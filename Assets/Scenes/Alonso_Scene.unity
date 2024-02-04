@@ -808,16 +808,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!61 &645705779 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 6390886808531725499, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
-  m_PrefabInstance: {fileID: 7108177978075549425}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &645705780 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 713018868238979908, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
-  m_PrefabInstance: {fileID: 7108177978075549425}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &645705783
 Animator:
   serializedVersion: 5
@@ -871,67 +861,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1294470793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1294470790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9238c83f8bd06844b0271545f73308c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 8826679186134023640, guid: 3f20dd6382412de4c8302a9b66b4a833, type: 3}
-  speed: 5
-  kingEated: 0
-  kingHungry: 29
-  kingDigested: 0
-  startColor: {r: 1, g: 1, b: 1, a: 1}
-  endColor: {r: 0, g: 1, b: 0, a: 1}
-  phase_1: 1
-  phase_2: 0
-  phase_timer: 5
-  countdown_timer: 2.9
-  cnt_food: 0
-  timer: 0
-  durationTimer: 5
-  collider2D: {fileID: 1294470800}
-  mouthCollider: {fileID: 645705779}
-  mouthSpriteRender: {fileID: 645705780}
-  spriteRenderer: {fileID: 1294470798}
-  isShoot: 0
-  small_cnt: 0
-  medion_cnt: 0
-  large_cnt: 0
-  bullet_life: 5
-  food_list: []
-  smallSize: 3
-  mediumSize: 2
-  largeSize: 1
-  smallProjectilePrefab: {fileID: 4560887546175445494, guid: 7f59fb024ca16ab478d2ddec89211fe7, type: 3}
-  mediumProjectilePrefab: {fileID: 209093359670482440, guid: 250d516b51517ac42a39512f1aaceb1f, type: 3}
-  largeProjectilePrefab: {fileID: 7165070503951676829, guid: f227694bf40819741b209a82f4a9dbfe, type: 3}
-  colider_boca: {fileID: 645705779}
-  animator: {fileID: 1294470802}
-  smallPictures:
-  - {fileID: 1252776979, guid: 063b05396ac3e3248b0111ef0deb2d0f, type: 3}
-  - {fileID: -1719856931, guid: 063b05396ac3e3248b0111ef0deb2d0f, type: 3}
-  - {fileID: -2093334488, guid: 063b05396ac3e3248b0111ef0deb2d0f, type: 3}
-  - {fileID: -305632028, guid: 063b05396ac3e3248b0111ef0deb2d0f, type: 3}
-  - {fileID: -1809443530, guid: 063b05396ac3e3248b0111ef0deb2d0f, type: 3}
-  mediumPictures:
-  - {fileID: -1297945608, guid: f39c21e9e1275734a915ed1749667e24, type: 3}
-  - {fileID: 1129870272, guid: f39c21e9e1275734a915ed1749667e24, type: 3}
-  - {fileID: -1295967341, guid: f39c21e9e1275734a915ed1749667e24, type: 3}
-  - {fileID: -631253307, guid: f39c21e9e1275734a915ed1749667e24, type: 3}
-  largePictures:
-  - {fileID: -1835596965, guid: f9e960e348fa8774ab5b6ee04f04a5db, type: 3}
-  - {fileID: -425440124, guid: f9e960e348fa8774ab5b6ee04f04a5db, type: 3}
-  theKingIsDead: 0
-  eatingSound: {fileID: 0}
-  eated: 0
 --- !u!114 &1294470797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -944,21 +873,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caf938a15af70c6478a0b6aa7af19878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!212 &1294470798 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 1669264845051102861, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
-  m_PrefabInstance: {fileID: 7108177978075549425}
+--- !u!82 &1294470806
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1294470800 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 2840333351542139950, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
-  m_PrefabInstance: {fileID: 7108177978075549425}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1294470802 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3194113118607521334, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
-  m_PrefabInstance: {fileID: 7108177978075549425}
-  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294470790}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1.8414781
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1341669297
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,7 +1000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 345574339}
   sceneToLoad: You_lose
-  scrRey: {fileID: 1294470793}
+  scrRey: {fileID: 0}
   contadorText: {fileID: 1801773126}
 --- !u!4 &1341669299
 Transform:
@@ -1612,7 +1622,7 @@ PrefabInstance:
     - target: {fileID: 351875416607747507, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: reyBehaviour
       value: 
-      objectReference: {fileID: 1294470793}
+      objectReference: {fileID: 0}
     - target: {fileID: 713018868238979908, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1781,6 +1791,42 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 4.8
       objectReference: {fileID: 0}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: eatingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e4515b788ac445b4686300d7b9fff5af, type: 3}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: destroyingBullets.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: destroyingBullets.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 1667d3a3daf71454c879dbfddb8353e7, type: 3}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: destroyingBullets.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: c475aea047bede0459b58952bf04db8a, type: 3}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: destroyingBullets.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4526e36fecad8314f86d99cafd88da0e, type: 3}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: destroyingBullets.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 61b2ad11f228a5946b476b710b20412e, type: 3}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: destroyingBullets.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: cfe52d6270114c94faa986aa200f68b4, type: 3}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: destroyingBullets.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: af9a5d5aba7a56745aeeb402367ba341, type: 3}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: destroyingBullets.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 61b2ad11f228a5946b476b710b20412e, type: 3}
     - target: {fileID: 8602588547051204286, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_Name
       value: Rey_Gordo
@@ -1791,13 +1837,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8602588547051204286, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1294470793}
-    - targetCorrespondingSourceObject: {fileID: 8602588547051204286, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1294470792}
     - targetCorrespondingSourceObject: {fileID: 8602588547051204286, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1294470797}
+    - targetCorrespondingSourceObject: {fileID: 8602588547051204286, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1294470806}
     - targetCorrespondingSourceObject: {fileID: 9126503587928880844, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 645705783}

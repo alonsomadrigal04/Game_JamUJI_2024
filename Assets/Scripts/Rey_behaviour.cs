@@ -96,9 +96,12 @@ public class Rey_behaviour : MonoBehaviour
 
     //------ BOOLEANOS ------
     public bool theKingIsDead = false;
+    public bool destoySound;
+    public float destroySound_timer;
 
     //------ SOUNDS ------
     public AudioClip eatingSound;
+    public AudioClip[] destroyingBullets;
 
     public bool eated;
 
@@ -128,9 +131,22 @@ public class Rey_behaviour : MonoBehaviour
 
     }
 
+    private void PlayRandomEatingSound()
+    {
+
+        AudioSource.PlayClipAtPoint(eatingSound, transform.position);
+    }
+
     private void PlayRandomDyingSound()
     {
-        AudioSource.PlayClipAtPoint(eatingSound, transform.position);
+        if (destroyingBullets.Length > 0)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, destroyingBullets.Length);
+            AudioClip randomClip = destroyingBullets[randomIndex];
+
+            // Play the selected dash sound
+            AudioSource.PlayClipAtPoint(randomClip, transform.position);
+        }
     }
 
     public void UpdatePhases()
@@ -193,6 +209,7 @@ public class Rey_behaviour : MonoBehaviour
                 hasSubtractedFood = false;
             }
         }
+
     }
 
     public void AnimationControler()
@@ -291,7 +308,12 @@ public class Rey_behaviour : MonoBehaviour
             projectileRenderer.sprite = largePictures[randomIndex];
         }
 
-        Destroy(new_projectile, bullet_life);
+        // Attach ProjectileBehavior component to the projectile
+        ProjectileBehavior projectileBehavior = new_projectile.AddComponent<ProjectileBehavior>();
+        projectileBehavior.bulletLife = bullet_life;
+        projectileBehavior.destroyingSounds = destroyingBullets;
+
+
         isShoot = true;
     }
 
