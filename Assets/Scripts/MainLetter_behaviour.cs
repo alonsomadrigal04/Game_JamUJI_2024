@@ -30,6 +30,8 @@ public class MainLetter_behaviour : MonoBehaviour
 
     public SpriteRenderer shine;
 
+    public SpriteRenderer background;
+
     // ------ TIMER ------
     public float timer;
     private float timerTime = 1;
@@ -55,6 +57,7 @@ public class MainLetter_behaviour : MonoBehaviour
         StartPosition(granny, initialPositionGranny);
         StartPosition(vs, initialPositionVs);
         StartPosition(king, initialPositionKing);
+
     }
     void Update()
     {
@@ -106,7 +109,7 @@ public class MainLetter_behaviour : MonoBehaviour
         {
             timerAnimator = 0;
             timerCheck = false;
-            shine.DOFade(100f, 0.1f);
+            shine.DOFade(1.0f, 0.2f).SetEase(Ease.OutCubic);
             animator.SetBool("Shine", true);
         }
     }
@@ -131,14 +134,15 @@ public class MainLetter_behaviour : MonoBehaviour
     }
     private void EndShineAnimation()
     {
-        shine.DOFade(0f, 0.1f).OnComplete(CheckerFade);
+        shine.DOFade(0.0f, 0.1f).OnComplete(CheckerFade);
     }
 
     private void CheckerFade()
     {
         Debug.Log("EstoyInside");
-        grannyFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
-        vsFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
-        kingFade.DOFade(0f, 2f).SetEase(Ease.OutCubic);
+        grannyFade.DOFade(0.0f, 2.0f).SetEase(Ease.OutCubic);
+        vsFade.DOFade(0.0f, 2.0f).SetEase(Ease.OutCubic);
+        kingFade.DOFade(0.0f, 2.0f).SetEase(Ease.OutCubic);
+        background.DOFade(0.0f, 2.0f);
     }
 }

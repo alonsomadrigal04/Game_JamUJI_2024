@@ -451,6 +451,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a63986c05ca6b447aca629d8790ceb7, type: 3}
+--- !u!212 &1884981749 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1272653183791353193, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
+  m_PrefabInstance: {fileID: 3737329000911913889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1990951974
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrannyWIns
       objectReference: {fileID: 0}
+    - target: {fileID: 2501246830624760920, guid: b9ddf246660055d4a9d361916d042faa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4138602538925005737, guid: b9ddf246660055d4a9d361916d042faa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -940,6 +949,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 494739579413559449, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.4479
+      objectReference: {fileID: 0}
+    - target: {fileID: 1272653183791353193, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
+      propertyPath: m_Color.a
+      value: 0.6039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467505124413711479, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.46879998
+      objectReference: {fileID: 0}
     - target: {fileID: 3975815247319343208, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -980,9 +1001,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5571753028977407188, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.458
+      objectReference: {fileID: 0}
+    - target: {fileID: 5847123555668335487, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
+      propertyPath: background
+      value: 
+      objectReference: {fileID: 1884981749}
     - target: {fileID: 5954543502764847614, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
       propertyPath: m_Name
       value: Letters
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954543502764847614, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8205728860839086782, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

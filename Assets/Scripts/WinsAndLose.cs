@@ -20,6 +20,7 @@ public class WinsAndLose : MonoBehaviour
     public GameObject key;
     public SpriteRenderer esc;
     public SpriteRenderer enter;
+    public SpriteRenderer background;
 
 
     private void Awake()
@@ -28,8 +29,9 @@ public class WinsAndLose : MonoBehaviour
         wins.transform.position = initialPositionWins;
         king.transform.position = initialPositionKing;
 
-        esc.DOFade(0f, 0.1f);
-        enter.DOFade(0f, 0.1f);
+        esc.DOFade(0.0f, 0.1f);
+        enter.DOFade(0.0f, 0.1f);
+        background.DOFade(0.0f, 0.1f);
     }
     void Update()
     {
@@ -51,11 +53,13 @@ public class WinsAndLose : MonoBehaviour
 
     private void GrannyWins()
     {
+        background.DOFade(0.6f, 2.0f).SetEase(Ease.OutCubic);
         granny.transform.DOMove(perfectPositionGranny, 1).SetEase(Ease.InSine).OnComplete(WordWins);
     }
 
     private void KingWins()
     {
+        background.DOFade(0.6f, 2.0f).SetEase(Ease.OutCubic);
         king.transform.DOMove(perfectPositionKing, 1).SetEase(Ease.InSine).OnComplete(WordWins);
     }
 
@@ -66,8 +70,8 @@ public class WinsAndLose : MonoBehaviour
 
     private void KeyMotion()
     {
-        esc.DOFade(100f, 1.0f);
-        enter.DOFade(100f, 1.0f);
+        esc.DOFade(1.0f, 1.0f).SetEase(Ease.OutCubic);
+        enter.DOFade(1.0f, 1.0f).SetEase(Ease.OutCubic);
         key.transform.DOMoveY(transform.position.y + 0.2f, 1.0f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
 
         //0.2f, 1.5f
