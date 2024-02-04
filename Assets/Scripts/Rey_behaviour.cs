@@ -33,17 +33,18 @@ public class Rey_behaviour : MonoBehaviour
     private int right = 2;
     private int up = 3;
     private int down = 4;
+
     // ------ KING MOVEMENT VECTOR POSTION ------
-    private Vector2 leftPosition = new Vector2(-2.7f, 0);
-    private Vector2 rightPosition = new Vector2(2.73f, 0);
-    private Vector2 upPosition = new Vector2(0, 1.61f);
-    private Vector2 downPosition = new Vector2(0, -1.63f);
+    private Vector2 leftPosition = new Vector2(-2.53f, 0);
+    private Vector2 rightPosition = new Vector2(2.53f, 0);
+    private Vector2 upPosition = new Vector2(0, 1.64f);
+    private Vector2 downPosition = new Vector2(0, -1.72f);
 
     // ------ KING MOVEMENT VECTOR POSTION FRONT ------
-    private Vector2 leftPositionFront = new Vector2(-2.01f, 0);
-    private Vector2 rightPositionFront = new Vector2(2.01f, 0);
-    private Vector2 upPositionFront = new Vector2(0, 0.9f);
-    private Vector2 downPositionFront = new Vector2(0, -0.91f);
+    private Vector2 leftPositionFront = new Vector2(-1.76f, 0);
+    private Vector2 rightPositionFront = new Vector2(1.76f, 0);
+    private Vector2 upPositionFront = new Vector2(0, 0.93f);
+    private Vector2 downPositionFront = new Vector2(0, -0.93f);
 
     // ------ KING MOVEMENT VECTOR ROTATION ------
     private Vector3 leftRotation = new Vector3(0, 0, 90);
@@ -298,21 +299,24 @@ public class Rey_behaviour : MonoBehaviour
 
     private void KingMovement()
     {
+        Debug.Log("1 entra");
         switch (actualPosition)
         {
             case 1:
-                transform.DOMove(leftPosition, 3).OnComplete(tpMovement);
+                Debug.Log("Caso01");
+                transform.DOMoveX(transform.position.x - 0.80f, 3).OnComplete(tpMovement);
                 break;
             case 2:
-                transform.DOMove(rightPosition, 3).OnComplete(tpMovement);
-                    
+                Debug.Log("Caso02");
+                transform.DOMoveX(transform.position.x + 0.80f, 3).OnComplete(tpMovement);
                 break;
             case 3:
-                transform.DOMove(upPosition, 3).OnComplete(tpMovement);
-                    
+                Debug.Log("Caso03");
+                transform.DOMoveY(transform.position.y + 0.80f, 3).OnComplete(tpMovement);
                 break;
             case 4:
-                transform.DOMove(downPosition, 3).OnComplete(tpMovement);
+                Debug.Log("Caso04");
+                transform.DOMoveY(transform.position.y - 0.80f, 3).OnComplete(tpMovement);
                 break;
             default: break;
         }
@@ -320,15 +324,15 @@ public class Rey_behaviour : MonoBehaviour
 
     private void tpMovement()
     {
+        Debug.Log("2 preparacion tp");
         newPosition = UnityEngine.Random.Range(1, 5);
-        Debug.Log("NumeroRandom");
         if ((newPosition >= 1 && newPosition <= 4 && newPosition != actualPosition) && !movementDone)
         {
             spriteRenderer.enabled = false;
             mouthSpriteRender.enabled = false;
             collider2D.enabled = false;
             mouthCollider.enabled = false;
-            Debug.Log("Dentro del if");
+            Debug.Log("3 tp");
             actualPosition = newPosition;
             switch (newPosition)
             {
@@ -367,7 +371,7 @@ public class Rey_behaviour : MonoBehaviour
         activateTimer = true;
         if(timer > durationTimer)
         {
-            Debug.Log("SALGO BEBES");
+            Debug.Log("4 salida");
             spriteRenderer.enabled = enabled;
             mouthSpriteRender.enabled = enabled;
             collider2D.enabled = enabled;
