@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class WinsAndLose : MonoBehaviour
 {
@@ -22,6 +23,17 @@ public class WinsAndLose : MonoBehaviour
     public SpriteRenderer enter;
     public SpriteRenderer background;
 
+    public Player_behaviou player_shit;
+    public Rey_behaviour king_shit;
+
+    public bool hasanimated=false;
+
+    public AudioClip king_winsSound;
+    public bool hassounded;
+    public float timer_sound;
+
+    public bool sounplayed;
+
 
     private void Awake()
     {
@@ -29,25 +41,52 @@ public class WinsAndLose : MonoBehaviour
         wins.transform.position = initialPositionWins;
         king.transform.position = initialPositionKing;
 
+        player_shit = FindObjectOfType<Player_behaviou>();
+        king_shit = FindObjectOfType<Rey_behaviour>();
+
         esc.DOFade(0.0f, 0.1f);
         enter.DOFade(0.0f, 0.1f);
         background.DOFade(0.0f, 0.1f);
     }
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            GrannyWins();
-        }
-        if(Input.GetKeyDown(KeyCode.K))
+        if(!player_shit.isAlive && !hasanimated)
         {
             KingWins();
+            hasanimated = true;
+            
+        }
+        if(king_shit.theKingIsDead && !hasanimated)
+        {
+            GrannyWins();
+            hasanimated = true;
+        }
+        if(hasanimated)
+        {
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                string nombreEscena = SceneManager.GetActiveScene().name;
+                SceneManager.LoadScene(nombreEscena);
+
+
+            }
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
             granny.transform.position = initialPositionGranny;
             wins.transform.position = initialPositionWins;
             king.transform.position = initialPositionKing;
+        }
+
+        if(hassounded)
+        {
+            timer_sound += Time.deltaTime;
+        }
+
+        if(timer_sound >= 0.7f && !sounplayed)
+        {
+            AudioSource.PlayClipAtPoint(king_winsSound, transform.position);
+            sounplayed = true;
         }
     }
 
@@ -61,6 +100,8 @@ public class WinsAndLose : MonoBehaviour
     {
         background.DOFade(0.6f, 2.0f).SetEase(Ease.OutCubic);
         king.transform.DOMove(perfectPositionKing, 1).SetEase(Ease.InSine).OnComplete(WordWins);
+        
+        hassounded = true;
     }
 
     private void WordWins()
