@@ -42,7 +42,7 @@ public class pickObjects : MonoBehaviour
                 player_Behaviou.isCarry = true;
                 PlayRandomDyingSound();
 
-                // Reducir la velocidad según el tipo de objeto recogido
+                // Reducir la velocidad segï¿½n el tipo de objeto recogido
                 if (collision.gameObject.tag == "Medium")
                 {
                     player_Behaviou.movement_speed = 1.1f;
