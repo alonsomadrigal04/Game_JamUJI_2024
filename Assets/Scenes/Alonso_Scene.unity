@@ -349,7 +349,7 @@ MonoBehaviour:
   maincollider: {fileID: 345574332}
   isAlive: 1
   timer_animation: 1
-  dashSpeed: 1.7
+  dashSpeed: 3.06
   dashDuration: 0.2
   animator: {fileID: 345574341}
   spriteRenderer: {fileID: 0}
