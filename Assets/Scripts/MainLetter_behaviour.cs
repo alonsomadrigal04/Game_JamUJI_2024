@@ -48,6 +48,7 @@ public class MainLetter_behaviour : MonoBehaviour
     private bool checkerFade = false;
 
     public AudioClip Title_sound;
+    public AudioClip main_Theme;
     public AudioClip Shine;
 
 
@@ -95,6 +96,7 @@ public class MainLetter_behaviour : MonoBehaviour
     private void PlayRandomEatingSound()
     {
         AudioSource.PlayClipAtPoint(Shine, transform.position);
+        AudioSource.PlayClipAtPoint(main_Theme, transform.position);
     }
     public void CheckTempo()
     {

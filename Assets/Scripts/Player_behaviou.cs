@@ -35,12 +35,18 @@ public class Player_behaviou : MonoBehaviour
     public AudioClip[] DyingSounds;
     public AudioClip[] ThrowSounds;
 
+    Rey_behaviour king_shit;
+    public float timer_dance;
+    public bool iniciado;
+    public bool hasdance;
+
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         maincollider = gameObject.GetComponent<Collider2D>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        king_shit = FindObjectOfType<Rey_behaviour>();
 
         // ------- ANIMATION -------
         animator = GetComponent<Animator>();
@@ -63,6 +69,19 @@ public class Player_behaviou : MonoBehaviour
         CheckIsAlive();
         CheckDashInput();
         UpdateTimer();
+
+        if(king_shit.theKingIsDead)
+        {
+            iniciado = true;
+        }
+        if(iniciado)
+        {
+            timer_dance += Time.deltaTime;
+            if(timer_dance >= 8.0f)
+            {
+                animator.SetBool("isDancing", true);
+            }
+        }
     }
 
     private void UpdateMovement()

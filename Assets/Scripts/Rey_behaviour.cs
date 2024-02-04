@@ -106,6 +106,7 @@ public class Rey_behaviour : MonoBehaviour
     public AudioClip deadSound;
     public AudioClip[] destroyingBullets;
     public AudioClip[] burpsSounds;
+    
 
     ////------ FINALDEAD ------
     public int CuantityOfBullets = 10;
@@ -145,6 +146,7 @@ public class Rey_behaviour : MonoBehaviour
     private void PlayRandomEatingSound()
     {
         AudioSource.PlayClipAtPoint(eatingSound, transform.position);
+        
     }
 
     private void PlayRandomDBurpSound()

@@ -372,6 +372,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d6ef11eac8ef334db1ead06cae77709, type: 3}
   - {fileID: 8300000, guid: 70511f85afb5b6c49a5adcb02a49ebd7, type: 3}
   - {fileID: 8300000, guid: 87ca5598d3f4320459a5bb3ea3447a43, type: 3}
+  timer_dance: 0
+  iniciado: 0
+  hasdance: 0
 --- !u!114 &345574336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1067,6 +1070,10 @@ PrefabInstance:
       propertyPath: Shine
       value: 
       objectReference: {fileID: 8300000, guid: 72d6fd97ffc3e4b4b94f70afa2070aa4, type: 3}
+    - target: {fileID: 5847123555668335487, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
+      propertyPath: main_Theme
+      value: 
+      objectReference: {fileID: 8300000, guid: 98fe0f8d78b1ca24c930ec9513599e0c, type: 3}
     - target: {fileID: 5847123555668335487, guid: 5dc8268a062e4064db3b44c5c911b6b4, type: 3}
       propertyPath: Title_sound
       value: 
