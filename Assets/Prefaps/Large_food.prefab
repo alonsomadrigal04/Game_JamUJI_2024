@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 95383467374544040}
   - component: {fileID: -1193504872600690117}
   - component: {fileID: 5317121641391647834}
+  - component: {fileID: -4792609681325356267}
   m_Layer: 6
   m_Name: Large_food
   m_TagString: Large
@@ -33,6 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3905337303579458073}
+  - {fileID: 7058083829506948465}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &95383467374544040
@@ -149,6 +151,23 @@ CircleCollider2D:
   m_Offset: {x: -0.0111695975, y: 0}
   serializedVersion: 2
   m_Radius: 0.19433989
+--- !u!114 &-4792609681325356267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165070503951676829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10aaabf125a6b9b4b8a3c68aa9a3c5eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletLife: 0
+  destroyingSounds: []
+  rb: {fileID: 0}
+  velocity: {x: 0, y: 0}
+  explosion: {fileID: 8312142009245567749}
 --- !u!1 &7258926846694000901
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,3 +252,70 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &6361642736762342347
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5289976653293291111}
+    m_Modifications:
+    - target: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.014
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9094525098771981722, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+      propertyPath: m_Name
+      value: Big Bullet Explosion
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+--- !u!4 &7058083829506948465 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4159709249143404218, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+  m_PrefabInstance: {fileID: 6361642736762342347}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8312142009245567749 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3104019470566736078, guid: 60a9c5e85c6bc394292c76609dbd430f, type: 3}
+  m_PrefabInstance: {fileID: 6361642736762342347}
+  m_PrefabAsset: {fileID: 0}

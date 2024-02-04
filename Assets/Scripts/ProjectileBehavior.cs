@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class ProjectileBehavior : MonoBehaviour
 {
-    public float bulletLife;
     public AudioClip[] destroyingSounds;
-
     private bool hasPlayedSound = false;
     public Rigidbody2D rb;
-
     public Vector2 velocity;
-
+    public float bulletLife;
 
     private void Start()
     {
-        // Destroy the projectile after bulletLife seconds
+        // Genera un valor aleatorio entre 5 y 7 para bulletLife
+        float randomBulletLife = Random.Range(5.0f, 7.0f);
+        bulletLife = randomBulletLife;
+
+        // Destruye el proyectil después de bulletLife segundos
         Destroy(gameObject, bulletLife);
         rb = GetComponent<Rigidbody2D>();
-        velocity= rb.velocity;
-
+        velocity = rb.velocity;
     }
 
     private void OnDestroy()
@@ -33,7 +33,7 @@ public class ProjectileBehavior : MonoBehaviour
 
     private void Update()
     {
-        if(rb.velocity == new Vector2(0.0f, 0.0f))
+        if (rb.velocity == Vector2.zero)
         {
             rb.velocity += new Vector2(1.2f, 1.1f);
         }
@@ -46,7 +46,7 @@ public class ProjectileBehavior : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, destroyingSounds.Length);
             AudioClip randomClip = destroyingSounds[randomIndex];
 
-            // Play the selected sound
+            // Reproduce el sonido seleccionado
             AudioSource.PlayClipAtPoint(randomClip, transform.position);
         }
     }

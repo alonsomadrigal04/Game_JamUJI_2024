@@ -181,8 +181,16 @@ PrefabInstance:
       value: SpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 4466648121430510239, guid: 5248a9e92f70d0b4cb3157d8ba41d246, type: 3}
+      propertyPath: timer
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466648121430510239, guid: 5248a9e92f70d0b4cb3157d8ba41d246, type: 3}
       propertyPath: durationTimer
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4466648121430510239, guid: 5248a9e92f70d0b4cb3157d8ba41d246, type: 3}
+      propertyPath: maxQuatityObjects
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4466648121430510239, guid: 5248a9e92f70d0b4cb3157d8ba41d246, type: 3}
       propertyPath: imageLarge.Array.size
@@ -1919,7 +1927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2840333351542139950, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_Size.y
-      value: 0.04122424
+      value: 0.49499047
       objectReference: {fileID: 0}
     - target: {fileID: 2840333351542139950, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_Offset.x
@@ -1927,7 +1935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2840333351542139950, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_Offset.y
-      value: 0.47938776
+      value: 0.25250465
       objectReference: {fileID: 0}
     - target: {fileID: 2840333351542139950, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
@@ -2038,6 +2046,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
+      propertyPath: explosao
+      value: 
+      objectReference: {fileID: 506840105617562452, guid: c1e198c074ccc4f4b994226739df5831, type: 3}
+    - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: deadSound
       value: 
       objectReference: {fileID: 8300000, guid: 974ffbf66408c754088b749640f0ac1f, type: 3}
@@ -2067,7 +2079,7 @@ PrefabInstance:
       objectReference: {fileID: 6898684058683777094, guid: 33f776834ed4c4f47814506fbf96360c, type: 3}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: CuantityOfBullets
-      value: 22
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8537664002279188282, guid: 8978627222f75b9489875841bd4fe96a, type: 3}
       propertyPath: burpsSounds.Array.size

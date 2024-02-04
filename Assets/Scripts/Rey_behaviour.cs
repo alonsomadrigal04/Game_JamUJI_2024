@@ -113,6 +113,8 @@ public class Rey_behaviour : MonoBehaviour
     public int WavesCount = 5;  // Número de oleadas
     public int BulletsPerWave = 20;  // Número de balas por oleada
 
+    public mouth_behaviour scrMouth; 
+
 
     public bool eated;
 
@@ -122,6 +124,7 @@ public class Rey_behaviour : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         collider2D = GetComponent<Collider2D>();
+        
     }
     void Update()
     {
@@ -291,7 +294,7 @@ public class Rey_behaviour : MonoBehaviour
             Rigidbody2D rb_new_projectile = new_projectile.GetComponent<Rigidbody2D>();
 
             ProjectileBehavior projectileBehavior = new_projectile.AddComponent<ProjectileBehavior>();
-            projectileBehavior.bulletLife = bullet_life;
+            //projectileBehavior.bulletLife = bullet_life;
             projectileBehavior.destroyingSounds = destroyingBullets;
 
             rb_new_projectile.velocity = shootDirection * 1.2f;
@@ -303,6 +306,8 @@ public class Rey_behaviour : MonoBehaviour
 
     public void AnimationControler()
     {
+        //scrMouth = GetComponent<mouth_behaviour>();
+        scrMouth.animatoring.SetBool("isEating", false);
         eated = false;
     }
 
@@ -404,8 +409,9 @@ public class Rey_behaviour : MonoBehaviour
 
         // Attach ProjectileBehavior component to the projectile
         ProjectileBehavior projectileBehavior = new_projectile.AddComponent<ProjectileBehavior>();
-        projectileBehavior.bulletLife = bullet_life;
+        //projectileBehavior.bulletLife = bullet_life;
         projectileBehavior.destroyingSounds = destroyingBullets;
+
 
 
         isShoot = true;

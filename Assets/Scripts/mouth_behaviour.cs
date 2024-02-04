@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ColiderBocaScript : MonoBehaviour
+public class mouth_behaviour : MonoBehaviour
 {
     public float animator_timer = 0;
 
@@ -25,6 +25,11 @@ public class ColiderBocaScript : MonoBehaviour
         //animatoring.SetBool("isEated", eated);
         reyBehaviour.animator.SetBool("isEating", reyBehaviour.eated);
         animatoring.SetBool("isEated", reyBehaviour.eated);
+    }
+
+    void TragarAlways()
+    {
+        animatoring.SetBool("isEated", false);
     }
 
     void OnTriggerEnter2D(Collider2D other)
