@@ -1,12 +1,30 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ColiderBocaScript : MonoBehaviour
 {
+    public float animator_timer = 0;
+
+    public Rey_behaviour reyBehaviour;
+    public Animator animatoring;
+
+    private void Start()
+    {
+        reyBehaviour = GetComponentInParent<Rey_behaviour>();
+
+    }
+
+    private void Update()
+    {
+        //animatoring.SetBool("isEated", eated);
+        reyBehaviour.animator.SetBool("isEating", reyBehaviour.eated);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        Rey_behaviour reyBehaviour = GetComponentInParent<Rey_behaviour>();
 
         // Obtén el tag del objeto
         string foodTag = other.tag;
@@ -16,6 +34,7 @@ public class ColiderBocaScript : MonoBehaviour
         if (reyBehaviour != null)
         {
             reyBehaviour.kingEated++;
+            Debug.Log("he llegado aqui");
 
             if (foodTag == "Small")
             {
@@ -31,6 +50,7 @@ public class ColiderBocaScript : MonoBehaviour
             }
 
             // Destruye el objeto original
+            reyBehaviour.eated = true;
             Destroy(other.gameObject);
         }
     }
