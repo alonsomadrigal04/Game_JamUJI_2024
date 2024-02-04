@@ -29,13 +29,18 @@ public class WinsAndLose : MonoBehaviour
     public bool hasanimated=false;
 
     public AudioClip king_winsSound;
+    public AudioClip granny_wins;
     public bool hassounded;
     public float timer_sound;
+    public ParticleSystem confeti;
 
     public float win_timer;
     public bool win_bool;
 
+
     public bool sounplayed;
+
+    public bool otroboolmas;
 
 
     private void Awake()
@@ -43,6 +48,7 @@ public class WinsAndLose : MonoBehaviour
         granny.transform.position = initialPositionGranny;
         wins.transform.position = initialPositionWins;
         king.transform.position = initialPositionKing;
+        
 
         player_shit = FindObjectOfType<Player_behaviou>();
         king_shit = FindObjectOfType<Rey_behaviour>();
@@ -50,6 +56,7 @@ public class WinsAndLose : MonoBehaviour
         esc.DOFade(0.0f, 0.1f);
         enter.DOFade(0.0f, 0.1f);
         background.DOFade(0.0f, 0.1f);
+        confeti.Stop();
     }
     void Update()
     {
@@ -61,8 +68,8 @@ public class WinsAndLose : MonoBehaviour
         }
         if(king_shit.theKingIsDead && !hasanimated)
         {
-            GrannyWins();
-
+            //GrannyWins();
+            win_bool= true;
             hasanimated = true;
         }
         if(hasanimated)
@@ -80,6 +87,17 @@ public class WinsAndLose : MonoBehaviour
             granny.transform.position = initialPositionGranny;
             wins.transform.position = initialPositionWins;
             king.transform.position = initialPositionKing;
+        }
+
+        if(win_bool)
+        {
+            win_timer += Time.deltaTime;
+        }
+        if(win_timer >= 10.0f && !otroboolmas)
+        {
+            GrannyWins();
+            otroboolmas = true;
+            AudioSource.PlayClipAtPoint(granny_wins, transform.position);
         }
 
         if(hassounded)
@@ -100,9 +118,10 @@ public class WinsAndLose : MonoBehaviour
     {
         background.DOFade(0.6f, 2.0f).SetEase(Ease.OutCubic);
         granny.transform.DOMove(perfectPositionGranny, 1).SetEase(Ease.InSine).OnComplete(WordWins);
+        confeti.Play();
     }
 
-    private void KingWins()
+    public void KingWins()
     {
         background.DOFade(0.6f, 2.0f).SetEase(Ease.OutCubic);
         king.transform.DOMove(perfectPositionKing, 1).SetEase(Ease.InSine).OnComplete(WordWins);

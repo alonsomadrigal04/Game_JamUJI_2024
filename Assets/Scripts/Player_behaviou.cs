@@ -34,11 +34,14 @@ public class Player_behaviou : MonoBehaviour
     public AudioClip[] dashSounds;
     public AudioClip[] DyingSounds;
     public AudioClip[] ThrowSounds;
+    public AudioClip winMusic;
 
     Rey_behaviour king_shit;
     public float timer_dance;
     public bool iniciado;
     public bool hasdance;
+
+    public WinsAndLose winnlose;
 
 
     void Start()
@@ -50,6 +53,8 @@ public class Player_behaviou : MonoBehaviour
 
         // ------- ANIMATION -------
         animator = GetComponent<Animator>();
+
+        winnlose = FindObjectOfType<WinsAndLose>();
     }
 
     void Update()
@@ -76,10 +81,30 @@ public class Player_behaviou : MonoBehaviour
         }
         if(iniciado)
         {
+            if(!isAlive)
+            {
+                winnlose.KingWins();
+                iniciado = false;
+                winnlose.win_bool = false;
+            }
+
             timer_dance += Time.deltaTime;
-            if(timer_dance >= 8.0f)
+            if(timer_dance >= 8.0f && !hasdance)
             {
                 animator.SetBool("isDancing", true);
+                hasdance= true;
+
+                AudioSource[] fuentesDeAudio = FindObjectsOfType<AudioSource>();
+
+                foreach (AudioSource fuenteDeAudio in fuentesDeAudio)
+                {
+                    fuenteDeAudio.Stop();
+                }
+                AudioSource.PlayClipAtPoint(winMusic, transform.position);
+
+                GameObject primerHijo = transform.GetChild(0).gameObject;
+                primerHijo.SetActive(false);
+
             }
         }
     }
